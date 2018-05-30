@@ -47,7 +47,7 @@ _GIF that demos the app coming soon and/or Invision link_
 | styled-components | nyc/istanbul |        |
 | CSS3 (Tachyons)   |              |        |
 | HTML5             |              |        |
-| Javascript        |              |        |
+| Javascript (ES6)  |              |        |
 
 ---
 
