@@ -1,8 +1,7 @@
 # craft-track
 
+![Craft Track logo](https://i.imgur.com/nGaqK8e.png)
 A web app built for social enterprise [Juta Shoes](https://www.jutashoes.com/).
-
---- craft-track logo ---
 
 --- travis status ---
 
@@ -40,41 +39,14 @@ _GIF that demos the app coming soon and/or Invision link_
 
 ### Tech stack
 
-#### Primary stack
-
-#### Front end
-
-* React.js
-* JSX
-* styled-components
-* HTML5
-* CSS3 (Tachyons)
-
-#### Testing
-
-* Jest
-* Travis CI
-
-#### Other
-
-* Babel
-* Parcel
-
 | Front end         | Testing      | Other  |
 | ----------------- | ------------ | ------ |
 | React.js          | Jest         | Babel  |
 | JSX               | Travis CI    | Parcel |
 | styled-components | nyc/istanbul |        |
 | CSS3 (Tachyons)   |              |        |
-| HTML5             |              |        |  |
-| Javascript        |              |        |  |
-
-| Front end  |  Backend   |  Testing  |      Other       |
-| :--------: | :--------: | :-------: | :--------------: |
-|   HTML5    |  Node.js   |   Tape    | OAuth (Passport) |
-| CSS3 (BEM) | Handlebars | Travis CI |     Webpack      |
-|    SASS    | PostgreSQL | Supertest |      Babel       |
-| Javascript | Express.js |    nyc    |                  |
+| HTML5             |              |        |
+| Javascript        |              |        |
 
 ---
 
@@ -86,8 +58,11 @@ _GIF that demos the app coming soon and/or Invision link_
 
 ### Testing:
 
-1.  Run `npm test` in the command line
-2.  Check coverage with `npm run test:coverage`
+--- testing instructions ---
+
+## Workshop with Juta Shoes
+
+--- workshop explanation and images ---
 
 ## Useful resources
 
