@@ -62,7 +62,7 @@ config.env
 .next
 
 .cache
-dist
+dist/
 token.js
 __mocks__
 
