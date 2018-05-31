@@ -6,7 +6,7 @@ body {
     https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables
     they aren't properly supported by all browsers yet so postcss turns them into normal css for you
   */
-  background-color: hsl(239, 10, 80);
+  /* background-color: hsl(239, 10, 80); */
 }
 :root {
   --black: hsl(239, 10, 30);
