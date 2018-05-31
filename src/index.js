@@ -1,13 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "../public/style.min.css";
 
-import Title from "./components/title/title";
-
-const App = () => {
-	return <Title>hello, world</Title>;
-};
+import App from "./components/app";
 
 ReactDOM.render(<App />, document.getElementById("root"));
-
-export default App;
