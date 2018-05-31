@@ -1,10 +1,10 @@
 # craft-track
 
+[![Travis Build Status](https://travis-ci.org/fac-13/craft-track.svg?branch=master)](https://travis-ci.org/fac-13/craft-track)
+
 ![Craft Track logo](https://i.imgur.com/nGaqK8e.png)
 
 A web app built for social enterprise [Juta Shoes](https://www.jutashoes.com/).
-
---- travis status ---
 
 --- Preview craft-stack ---
 

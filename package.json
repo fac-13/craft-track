@@ -1,0 +1,68 @@
+{
+  "name": "Craft-Track",
+  "version": "1.0.0",
+  "description": "Track craft activities",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "parcel public/index.html",
+    "build": "parcel build public/index.html",
+    "postcss:build": "postcss ./src/css/index.css --output ./public/style.min.css --config ./postcss.config.js",
+    "postcss:watch": "postcss ./src/css/index.css --output ./public/style.min.css --watch --config ./postcss.config.js",
+    "build:prod": "npm run postcss:build && parcel build public/index.html",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "./node_modules/.bin/eslint **/*.js --ignore-pattern node_modules/"
+  },
+  "pre-commit": [
+    "build:prod",
+    "test",
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fac-13/craft-track.git"
+  },
+  "keywords": [
+    "tachyons",
+    "styled-components",
+    "react"
+  ],
+  "author": "LawEKS, helenzhou6, tdoran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fac-13/craft-track/issues"
+  },
+  "homepage": "https://github.com/fac-13/craft-track#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-jest": "^22.4.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-recommended": "^2.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.8.2",
+    "jest": "^23.0.1",
+    "parcel-bundler": "^1.8.1",
+    "pre-commit": "^1.2.2",
+    "react-testing-library": "^3.1.3",
+    "tachyons-custom": "^4.9.4"
+  },
+  "dependencies": {
+    "autoprefixer": "^8.5.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "styled-components": "^3.3.0",
+    "postcss-clean": "^1.1.0",
+    "postcss-cli": "^4.1.1",
+    "postcss-custom-media": "^6.0.0",
+    "postcss-custom-properties": "^6.3.1",
+    "postcss-import": "^11.1.0"
+  }
+}

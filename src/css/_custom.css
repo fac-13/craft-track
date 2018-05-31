@@ -1,0 +1,13 @@
+/* you can add your own styles in this file */
+
+body {
+  /* 
+    the var(--my-variable) syntax is a css variable
+    https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables
+    they aren't properly supported by all browsers yet so postcss turns them into normal css for you
+  */
+  background-color: hsl(239, 10, 80);
+}
+:root {
+  --black: hsl(239, 10, 30);
+}
