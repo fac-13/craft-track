@@ -6,13 +6,13 @@ const Wrapper = styled.div.attrs({
 }) ``;
 
 const HeaderText = styled.p.attrs({
-	className: "w-30"
+	className: "ttc w-30"
 }) ``;
 
 const Header = () => (
 	<Wrapper>
 		<HeaderText>
-			Submit Craft
+			Submit craft
 		</HeaderText>
 	</Wrapper>
 );

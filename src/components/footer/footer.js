@@ -6,7 +6,7 @@ const Wrapper = styled.div.attrs({
 }) ``;
 
 const FooterText = styled.p.attrs({
-	className: "w-30"
+	className: "ttc w-30"
 }) ``;
 
 const Footer = () => (
