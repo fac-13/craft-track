@@ -12,5 +12,8 @@ const data = {
 
 test("Test Shoe component - with data passed in", () => {
   const {container} = render(<Shoe style={data}></Shoe>);
-	expect(prettyDOM(container).includes("red")).toBeTruthy();
+  expect(prettyDOM(container).includes("red")).toBeTruthy();
+  expect(prettyDOM(container).includes("1")).toBeTruthy();
+  expect(prettyDOM(container).includes("caramel")).toBeTruthy();
+  expect(prettyDOM(container).includes("#FFFFFF")).toBeTruthy();
 });
