@@ -9,11 +9,11 @@ const dropDownProps = {
 	optionsArray: ["shoe", "workshop"],
 };
 
-const FormHead = ({ type = "shoe", handleChange }) => (
+const FormHead = ({ type, handleChange }) => (
 	<Fragment>
 		{type === "shoe" && <Shoe />}
 		{type === "workshop" && <Scissor />}
-		<DropDownField type={type} handleChange={handleChange} {...dropDownProps} />
+		<DropDownField name="type" value={type} handleChange={handleChange} {...dropDownProps} />
 	</Fragment>
 );
 

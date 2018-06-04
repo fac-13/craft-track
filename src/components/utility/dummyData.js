@@ -11,22 +11,27 @@ const oldData = [
 		},
 		"status": {
 			"complete": "false",
-			"date-completed": "null",
-			"hours-worked": "null",
-			"unit-price": "null"
+			"dateCompleted": "null",
+			"hoursWorked": "null",
+			"unitPrice": "null"
 		}
 	},
 	{
 		"id": "1527779741527779746931",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"
+			"title": "shoe making",
+			"stitchingColour": null,
+			"colourFront": null,
+			"colourBack": null,
+			"shoeSize": null,
+			"quantity": null,
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-05-31T15:03:07.879Z",
-			"hours-worked": "1",
-			"unit-price": "50"
+			"dateCompleted": "2018-05-31T15:03:07.879Z",
+			"hoursWorked": "1",
+			"unitPrice": "50"
 		}
 	},
 	{
@@ -41,22 +46,27 @@ const oldData = [
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-04-21T15:03:07.879Z",
-			"hours-worked": "1",
-			"unit-price": "50"
+			"dateCompleted": "2018-04-21T15:03:07.879Z",
+			"hoursWorked": "1",
+			"unitPrice": "50"
 		}
 	},
 	{
 		"id": "1527779741527779746933",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"
+			"title": "shoe making",
+			"stitchingColour": null,
+			"colourFront": null,
+			"colourBack": null,
+			"shoeSize": null,
+			"quantity": null
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-04-29T15:03:07.879Z",
-			"hours-worked": "1",
-			"unit-price": "50"
+			"dateCompleted": "2018-04-29T15:03:07.879Z",
+			"hoursWorked": "1",
+			"unitPrice": "50"
 		}
 	},
 	{
@@ -71,22 +81,27 @@ const oldData = [
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-03-22T15:03:07.879Z",
-			"hours-worked": "2",
-			"unit-price": "20"
+			"dateCompleted": "2018-03-22T15:03:07.879Z",
+			"hoursWorked": "2",
+			"unitPrice": "20"
 		}
 	},
 	{
 		"id": "1527779741527779746935",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"
+			"title": "shoe making",
+			"stitchingColour": null,
+			"colourFront": null,
+			"colourBack": null,
+			"shoeSize": null,
+			"quantity": null
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-05-31T15:03:07.879Z",
-			"hours-worked": "2",
-			"unit-price": "50"
+			"dateCompleted": "2018-05-31T15:03:07.879Z",
+			"hoursWorked": "2",
+			"unitPrice": "50"
 		}
 	},
 	{
@@ -101,22 +116,27 @@ const oldData = [
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-05-31T15:03:07.879Z",
-			"hours-worked": "4",
-			"unit-price": "50"
+			"dateCompleted": "2018-05-31T15:03:07.879Z",
+			"hoursWorked": "4",
+			"unitPrice": "50"
 		}
 	},
 	{
 		"id": "1527779741527779746937",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"
+			"title": "shoe making",
+			"stitchingColour": null,
+			"colourFront": null,
+			"colourBack": null,
+			"shoeSize": null,
+			"quantity": null
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-05-31T15:03:07.879Z",
-			"hours-worked": "1",
-			"unit-price": "50"
+			"dateCompleted": "2018-05-31T15:03:07.879Z",
+			"hoursWorked": "1",
+			"unitPrice": "50"
 		}
 	},
 	{
@@ -131,22 +151,27 @@ const oldData = [
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-05-31T15:03:07.879Z",
-			"hours-worked": "1",
-			"unit-price": "50"
+			"dateCompleted": "2018-05-31T15:03:07.879Z",
+			"hoursWorked": "1",
+			"unitPrice": "50"
 		}
 	},
 	{
 		"id": "1527779741527779746939",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"
+			"title": "shoe making",
+			"stitchingColour": null,
+			"colourFront": null,
+			"colourBack": null,
+			"shoeSize": null,
+			"quantity": null
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-05-31T15:03:07.879Z",
-			"hours-worked": "1",
-			"unit-price": "50"
+			"dateCompleted": "2018-05-31T15:03:07.879Z",
+			"hoursWorked": "1",
+			"unitPrice": "50"
 		}
 	}
 ];
@@ -163,9 +188,9 @@ const updatedEntry = {
 	},
 	"status": {
 		"complete": "false",
-		"date-completed": "null",
-		"hours-worked": "null",
-		"unit-price": "null"
+		"dateCompleted": "null",
+		"hoursWorked": "null",
+		"unitPrice": "null"
 	}
 };
 
@@ -182,22 +207,27 @@ const expected = [
 		},
 		"status": {
 			"complete": "false",
-			"date-completed": "null",
-			"hours-worked": "null",
-			"unit-price": "null"
+			"dateCompleted": "null",
+			"hoursWorked": "null",
+			"unitPrice": "null"
 		}
 	},
 	{
 		"id": "1527779741527779746931",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"
+			"title": "shoe making",
+			"stitchingColour": null,
+			"colourFront": null,
+			"colourBack": null,
+			"shoeSize": null,
+			"quantity": null
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-05-31T15:03:07.879Z",
-			"hours-worked": "1",
-			"unit-price": "50"
+			"dateCompleted": "2018-05-31T15:03:07.879Z",
+			"hoursWorked": "1",
+			"unitPrice": "50"
 		}
 	},
 	{
@@ -212,22 +242,27 @@ const expected = [
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-04-21T15:03:07.879Z",
-			"hours-worked": "1",
-			"unit-price": "50"
+			"dateCompleted": "2018-04-21T15:03:07.879Z",
+			"hoursWorked": "1",
+			"unitPrice": "50"
 		}
 	},
 	{
 		"id": "1527779741527779746933",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"
+			"title": "shoe making",
+			"stitchingColour": null,
+			"colourFront": null,
+			"colourBack": null,
+			"shoeSize": null,
+			"quantity": null
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-04-29T15:03:07.879Z",
-			"hours-worked": "1",
-			"unit-price": "50"
+			"dateCompleted": "2018-04-29T15:03:07.879Z",
+			"hoursWorked": "1",
+			"unitPrice": "50"
 		}
 	},
 	{
@@ -242,22 +277,27 @@ const expected = [
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-03-22T15:03:07.879Z",
-			"hours-worked": "2",
-			"unit-price": "20"
+			"dateCompleted": "2018-03-22T15:03:07.879Z",
+			"hoursWorked": "2",
+			"unitPrice": "20"
 		}
 	},
 	{
 		"id": "1527779741527779746935",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"
+			"title": "shoe making",
+			"stitchingColour": null,
+			"colourFront": null,
+			"colourBack": null,
+			"shoeSize": null,
+			"quantity": null
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-05-31T15:03:07.879Z",
-			"hours-worked": "2",
-			"unit-price": "50"
+			"dateCompleted": "2018-05-31T15:03:07.879Z",
+			"hoursWorked": "2",
+			"unitPrice": "50"
 		}
 	},
 	{
@@ -272,22 +312,27 @@ const expected = [
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-05-31T15:03:07.879Z",
-			"hours-worked": "4",
-			"unit-price": "50"
+			"dateCompleted": "2018-05-31T15:03:07.879Z",
+			"hoursWorked": "4",
+			"unitPrice": "50"
 		}
 	},
 	{
 		"id": "1527779741527779746937",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"
+			"title": "shoe making",
+			"stitchingColour": null,
+			"colourFront": null,
+			"colourBack": null,
+			"shoeSize": null,
+			"quantity": null
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-05-31T15:03:07.879Z",
-			"hours-worked": "1",
-			"unit-price": "50"
+			"dateCompleted": "2018-05-31T15:03:07.879Z",
+			"hoursWorked": "1",
+			"unitPrice": "50"
 		}
 	},
 	{
@@ -302,22 +347,27 @@ const expected = [
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-05-31T15:03:07.879Z",
-			"hours-worked": "1",
-			"unit-price": "50"
+			"dateCompleted": "2018-05-31T15:03:07.879Z",
+			"hoursWorked": "1",
+			"unitPrice": "50"
 		}
 	},
 	{
 		"id": "1527779741527779746939",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"
+			"title": "shoe making",
+			"stitchingColour": null,
+			"colourFront": null,
+			"colourBack": null,
+			"shoeSize": null,
+			"quantity": null
 		},
 		"status": {
 			"complete": "true",
-			"date-completed": "2018-05-31T15:03:07.879Z",
-			"hours-worked": "1",
-			"unit-price": "50"
+			"dateCompleted": "2018-05-31T15:03:07.879Z",
+			"hoursWorked": "1",
+			"unitPrice": "50"
 		}
 	}
 ];

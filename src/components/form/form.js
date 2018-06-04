@@ -16,10 +16,18 @@ export default class Form extends React.Component {
 	state = {
 		type: "shoe",
 		details: {
-			stitchingColour: "blue",
+			title: null,
+			colourStitching: "blue",
+			colourFront: "caramel",
+			colourBack: "caramel",
+			shoeSize: "36",
+			quantity: "1",
 		},
 		status: {
-
+			complete: false,
+			dateCompleted: null,
+			hoursWorked: null,
+			unitPrice: null,
 		},
 	}
 
@@ -28,13 +36,17 @@ export default class Form extends React.Component {
 	}
 	handleDetailsChange = (e) => {
 		const { type } = this.state;
+
 		if (type === "shoe") {
-			console.log("sib: ", e.target.previousSibling.textContent);
-			this.setState({ details: { stitchingColour: e.target.value } });
+			const labelName = e.target.previousSibling.name;
+
+			console.log("sib: ", labelName);
+
+			this.setState({ details: { [labelName]: e.target.value } } );
 		}
 
 		if (type === "workshop") {
-			// this.setState({ de: e.target.value });
+			// this.setState({ details: { title: e.target.value } } );
 		}
 
 	}
