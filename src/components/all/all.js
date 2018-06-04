@@ -22,24 +22,15 @@ const Plus = styled.button.attrs({
 	transform: translateX(-50%);
 `;
 
-const getShoeDetails = (shoeObj) => {
-	return {
-		colourStitching: shoeObj.details.colourStitching,
-		colourFront: shoeObj.details.colourFront,
-		colourBack: shoeObj.details.colourBack,
-		quantity: shoeObj.details.quantity,
-	};
-};
-
-const All = (props) => (
+const All = ({ crafts }) => (
 	<React.Fragment>
 		<CraftList>
-			{props.crafts.map((craft) => {
+			{crafts.map((craft) => {
 
 				return (
 					<CraftItem key={craft.id}>
-						{craft.type === "shoe" && <Shoe style={getShoeDetails(craft)} width="100%" />}
-						{craft.type === "workshop" && <img className="icon-width" src={icon__scissor} alt="workshop" />}
+						{craft.type === "shoe" && <Shoe style={craft.details} width="100%" />}
+						{craft.type === "workshop" && <img className="w-100" src={icon__scissor} alt="workshop" />}
 					</CraftItem>
 				);
 			})}
