@@ -5,15 +5,14 @@ const Wrapper = styled.div.attrs({
 	className: "fixed left-0 right-0 bg-light-gray"
 }) `
 	width: 100%;
-	height: 10rem;
+	height: 8rem;
 	transform: skewY(-5deg);
-	bottom: -5rem;
+${ props => props.position}: -5rem;
 	z-index: -100;
 `;
 
-const Footer = () => (
-	<Wrapper>
-	</Wrapper>
+const Frame = ({ position }) => (
+	<Wrapper position={position} />
 );
 
-export default Footer;
+export default Frame;
