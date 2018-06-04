@@ -1,8 +1,7 @@
 import React from "react";
 import "../../public/style.min.css";
 
-import Header from "./header/header";
-import Footer from "./footer/footer";
+import Frame from "./styled/frame/frame";
 import Landing from "./landing/landing";
 import All from "./all/all";
 
@@ -18,9 +17,9 @@ export default class App extends React.Component {
 		const { crafts } = this.state;
 		return (
 			<React.Fragment>
-				<Header />
+				<Frame position="top" />
 				<Landing />
-				<Footer />
+				<Frame position="bottom" />
 			</React.Fragment>
 		);
 	}

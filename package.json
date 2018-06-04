@@ -64,5 +64,11 @@
     "postcss-custom-media": "^6.0.0",
     "postcss-custom-properties": "^6.3.1",
     "postcss-import": "^11.1.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
+    }
   }
 }

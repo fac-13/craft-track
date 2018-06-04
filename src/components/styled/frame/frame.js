@@ -7,13 +7,12 @@ const Wrapper = styled.div.attrs({
 	width: 100%;
 	height: 8rem;
 	transform: skewY(-5deg);
-	top: -5rem;
-	z-index: 1;
+${ props => props.position}: -5rem;
+	z-index: -100;
 `;
 
-const Header = () => (
-	<Wrapper>
-	</Wrapper>
+const Frame = ({ position }) => (
+	<Wrapper position={position} />
 );
 
-export default Header;
+export default Frame;

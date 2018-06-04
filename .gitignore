@@ -64,6 +64,5 @@ config.env
 .cache
 dist/
 token.js
-__mocks__
 
 .vscode/*

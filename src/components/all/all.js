@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import Shoe from "../shoe/shoe";
+import Shoe from "../styled/shoe/shoe";
 import icon__scissor from "../../../public/assets/icon__scissor.svg";
 import icon__plus from "../../../public/assets/icon__plus.svg";
 
