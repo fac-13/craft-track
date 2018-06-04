@@ -1,19 +1,19 @@
 import React, { Fragment } from "react";
 import DropDownField from "../../dropDownField/dropDownField";
 
-const Shoe = () => <h3>Shoe</h3>;
-const Scissor = () => <h3>Scissor</h3>;
+const Shoe = () => <h3>shoe</h3>;
+const Scissor = () => <h3>scissor</h3>;
 
 const dropDownProps = {
-	title: "Type",
-	optionsArray: ["shoe", "Workshop"],
+	title: "type",
+	optionsArray: ["shoe", "workshop"],
 };
 
-const FormHead = ({ type = "shoe" }) => (
+const FormHead = ({ type = "shoe", handleChange }) => (
 	<Fragment>
 		{type === "shoe" && <Shoe />}
 		{type === "scissor" && <Scissor />}
-		<DropDownField {...dropDownProps}  />
+		<DropDownField type={type} handleChange={handleChange} {...dropDownProps} />
 	</Fragment>
 );
 

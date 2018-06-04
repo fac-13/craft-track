@@ -24,7 +24,7 @@ export default class Form extends React.Component {
 		return (
 			<Wrapper>
 				<h3>Submit Craft</h3>
-				<FormHead type={type} />
+				<FormHead type={type} handleChange={(e) => {this.setState({type: e.target.value});}} />
 				<FormCraftDetails />
 				<FormCraftStatus />
 				<FormSubmitButton />

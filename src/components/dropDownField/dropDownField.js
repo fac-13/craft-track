@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 
-const DropDownField = ({ title, optionsArray}) => (
+const DropDownField = ({ title, optionsArray, type, handleChange}) => (
 	<Fragment>
 		<label>{title}</label>
-		<select>
+		<select onChange={handleChange} value={type}>
 			{
 				optionsArray.map((optText) => (
 					<option key={optText} value={optText} >{optText}</option>
