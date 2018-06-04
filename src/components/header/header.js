@@ -2,18 +2,17 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div.attrs({
-	className: "z-1 absolute top-0 left-0 right-0 flex bg-moon-gray"
-}) ``;
-
-const HeaderText = styled.p.attrs({
-	className: "ttc w-30"
-}) ``;
+	className: "fixed left-0 right-0 bg-light-gray"
+}) `
+	width: 100%;
+	height: 10rem;
+	transform: skewY(-5deg);
+	top: -5rem;
+	z-index: -100;
+`;
 
 const Header = () => (
 	<Wrapper>
-		<HeaderText>
-			Submit craft
-		</HeaderText>
 	</Wrapper>
 );
 

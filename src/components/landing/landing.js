@@ -1,19 +1,31 @@
 import React from "react";
 import styled from "styled-components";
+import Shoe from "../shoe/shoe";
+import icon__arrow from "../../../public/assets/icon__arrow.svg";
 
 const Wrapper = styled.div.attrs({
-	className: "absolute top-0 bottom-0 left-0 right-0 flex justify-center flex-column bg-near-white"
-}) ``;
+	className: "flex flex-column items-center justify-around"
+}) `
+	min-height: 80vh;
+	margin: 10vh 5rem;
+`;
 
-const LandingText = styled.p.attrs({
-	className: "ttc w-30"
-}) ``;
+const shoeDetails = {
+	colourStitching: "#777",
+	quantity: 1,
+	colourFront: "#ccc",
+	colourBack: "#ccc",
+};
 
 const Landing = () => (
 	<Wrapper>
-		<LandingText>
-			Welcome to Craft Track!
-		</LandingText>
+		<h1 className="sg-heading">Welcome to Craft Track!</h1>
+		<p className="sg-text">This is an app to log the work you’ve done for Juta Shoes.</p>
+		<div className="ma4">
+			<Shoe style={shoeDetails} />
+		</div>
+		<p className="sg-text">Try me out and log your first craft!</p>
+		<img className="icon-width" src={icon__arrow} alt="arrow" />
 	</Wrapper>
 );
 
