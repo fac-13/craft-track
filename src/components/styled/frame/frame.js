@@ -7,13 +7,12 @@ const Wrapper = styled.div.attrs({
 	width: 100%;
 	height: 10rem;
 	transform: skewY(-5deg);
-	bottom: -5rem;
+${ props => props.position}: -5rem;
 	z-index: -100;
 `;
 
-const Footer = () => (
-	<Wrapper>
-	</Wrapper>
+const Frame = ({ position }) => (
+	<Wrapper position={position} />
 );
 
-export default Footer;
+export default Frame;
