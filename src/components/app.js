@@ -17,22 +17,20 @@ export default class App extends React.Component {
 
 	changePage = (e, page) => {
 		e.preventDefault();
+		console.log("pressed");
 		this.setState(() => {
 			return { pageView: page };
 		});
 	}
 
 	render() {
-		let page = <Landing changePage={this.changePage} />;
-		if (this.state.pageView == "viewall") {
-			page = <All crafts={crafts} />;
-		} else if (this.state.pageView == "form") {
-			page = <h1>Form</h1>;
-		}
+		const { pageView } = this.state;
 		return (
 			<React.Fragment>
 				<Frame position="top" />
-				{page}
+				{pageView === "all" && <All changePage={this.changePage} crafts={crafts} />}
+				{pageView === "form" && <h1>Form</h1>}
+				{pageView === "landing" && <Landing changePage={this.changePage} />}
 				<Frame position="bottom" />
 			</React.Fragment>
 		);

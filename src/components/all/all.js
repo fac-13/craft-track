@@ -22,7 +22,7 @@ const Plus = styled.button.attrs({
 	transform: translateX(-50%);
 `;
 
-const All = ({ crafts }) => (
+const All = ({ crafts, changePage }) => (
 	<React.Fragment>
 		<CraftList>
 			{crafts.map((craft) => {
@@ -36,8 +36,8 @@ const All = ({ crafts }) => (
 			})}
 
 		</CraftList>
-		<Plus>
-			{<img className="icon-width" src={icon__plus} alt="add craft" />}
+		<Plus onClick={(e) => changePage(e, "form")}>
+			<img className="icon-width" src={icon__plus} alt="add craft" />
 		</Plus>
 	</React.Fragment>
 );
