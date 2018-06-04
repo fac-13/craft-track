@@ -17,14 +17,14 @@ const shoeDetails = {
 	colourBack: "#ccc",
 };
 
-const Landing = () => (<Wrapper>
+const Landing = ({ changePage }) => (<Wrapper>
 	<h1 className="sg-heading">Welcome to Craft Track!</h1>
 	<p className="sg-text">This is an app to log the work you’ve done for Juta Shoes.</p>
 	<div className="ma4">
 		<Shoe style={shoeDetails} />
 	</div>
 	<p className="sg-text">Try me out and log your first craft!</p>
-	<img className="icon-width" src={icon__arrow} alt="arrow" />
+	<button onClick={(e) => changePage(e, "form")}><img className="icon-width" src={icon__arrow} alt="arrow" /></button>
 </Wrapper>);
 
 export default Landing;
