@@ -17,8 +17,8 @@ const shoeDetails = {
 	colourBack: "#ccc",
 };
 
-const Landing = () => (
-	<Wrapper>
+const Landing = () => {
+	return (<Wrapper>
 		<h1 className="sg-heading">Welcome to Craft Track!</h1>
 		<p className="sg-text">This is an app to log the work you’ve done for Juta Shoes.</p>
 		<div className="ma4">
@@ -26,7 +26,7 @@ const Landing = () => (
 		</div>
 		<p className="sg-text">Try me out and log your first craft!</p>
 		<img className="icon-width" src={icon__arrow} alt="arrow" />
-	</Wrapper>
-);
+	</Wrapper>);
+};
 
 export default Landing;
