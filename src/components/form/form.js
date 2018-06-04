@@ -14,19 +14,44 @@ const Wrapper = styled.div.attrs({
 
 export default class Form extends React.Component {
 	state = {
-		type: undefined,
+		type: "shoe",
+		details: {
+			stitchingColour: "blue",
+		},
+		status: {
+
+		},
+	}
+
+	handleTypeChange = (e) => {
+		this.setState({ type: e.target.value });
+	}
+	handleDetailsChange = (e) => {
+		const { type } = this.state;
+		if (type === "shoe") {
+			console.log("sib: ", e.target.previousSibling.textContent);
+			this.setState({ details: { stitchingColour: e.target.value } });
+		}
+
+		if (type === "workshop") {
+			// this.setState({ de: e.target.value });
+		}
+
+	}
+	handleStatusChange = (e) => {
+		this.setState({ type: e.target.value });
 	}
 
 	render() {
 
-		const { type } = this.state;
+		const { type, details } = this.state;
 
 		return (
 			<Wrapper>
 				<h3>Submit Craft</h3>
-				<FormHead type={type} handleChange={(e) => {this.setState({type: e.target.value});}} />
-				<FormCraftDetails />
-				<FormCraftStatus />
+				<FormHead type={type} handleChange={this.handleTypeChange} />
+				<FormCraftDetails type={type} handleChange={this.handleDetailsChange} details={details} />
+				<FormCraftStatus handleChange={this.handleStatusChange} />
 				<FormSubmitButton />
 			</Wrapper>
 		);
