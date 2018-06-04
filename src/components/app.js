@@ -1,8 +1,7 @@
 import React from "react";
 import "../../public/style.min.css";
 
-import Header from "./header/header";
-import Footer from "./footer/footer";
+import Frame from "./styled/frame/frame";
 import Landing from "./landing/landing";
 
 export default class App extends React.Component {
@@ -10,9 +9,9 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Header />
+				<Frame position="top" />
 				<Landing />
-				<Footer />
+				<Frame position="bottom" />
 			</React.Fragment>
 		);
 	}

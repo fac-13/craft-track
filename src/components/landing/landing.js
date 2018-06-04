@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Shoe from "../shoe/shoe";
+import Shoe from "../styled/shoe/shoe";
 import icon__arrow from "../../../public/assets/icon__arrow.svg";
 
 const Wrapper = styled.div.attrs({
