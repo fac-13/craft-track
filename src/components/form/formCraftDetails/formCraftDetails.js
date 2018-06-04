@@ -37,6 +37,13 @@ const FormCraftDetails = ({ type, handleChange, details }) => {
 					return <DropDownField key={key} name={key} value={value} handleChange={handleChange} {...dropDownProps[key]} />;
 				})
 			}
+			{
+				type === "workshop" &&
+					<Fragment>
+						<label htmlFor="title">title</label>
+						<input id="title" type="text" value={details.title} onChange={handleChange} />
+					</Fragment>
+			}
 
 		</Fragment>
 	);

@@ -11,9 +11,9 @@ const oldData = [
 		},
 		"status": {
 			"complete": "false",
-			"dateCompleted": "null",
-			"hoursWorked": "null",
-			"unitPrice": "null"
+			"dateCompleted": "",
+			"hoursWorked": "",
+			"unitPrice": ""
 		}
 	},
 	{
@@ -21,11 +21,11 @@ const oldData = [
 		"type": "workshop",
 		"details": {
 			"title": "shoe making",
-			"stitchingColour": null,
-			"colourFront": null,
-			"colourBack": null,
-			"shoeSize": null,
-			"quantity": null,
+			"stitchingColour": "",
+			"colourFront": "",
+			"colourBack": "",
+			"shoeSize": "",
+			"quantity": "",
 		},
 		"status": {
 			"complete": "true",
@@ -56,11 +56,11 @@ const oldData = [
 		"type": "workshop",
 		"details": {
 			"title": "shoe making",
-			"stitchingColour": null,
-			"colourFront": null,
-			"colourBack": null,
-			"shoeSize": null,
-			"quantity": null
+			"stitchingColour": "",
+			"colourFront": "",
+			"colourBack": "",
+			"shoeSize": "",
+			"quantity": ""
 		},
 		"status": {
 			"complete": "true",
@@ -91,11 +91,11 @@ const oldData = [
 		"type": "workshop",
 		"details": {
 			"title": "shoe making",
-			"stitchingColour": null,
-			"colourFront": null,
-			"colourBack": null,
-			"shoeSize": null,
-			"quantity": null
+			"stitchingColour": "",
+			"colourFront": "",
+			"colourBack": "",
+			"shoeSize": "",
+			"quantity": ""
 		},
 		"status": {
 			"complete": "true",
@@ -126,11 +126,11 @@ const oldData = [
 		"type": "workshop",
 		"details": {
 			"title": "shoe making",
-			"stitchingColour": null,
-			"colourFront": null,
-			"colourBack": null,
-			"shoeSize": null,
-			"quantity": null
+			"stitchingColour": "",
+			"colourFront": "",
+			"colourBack": "",
+			"shoeSize": "",
+			"quantity": ""
 		},
 		"status": {
 			"complete": "true",
@@ -161,11 +161,11 @@ const oldData = [
 		"type": "workshop",
 		"details": {
 			"title": "shoe making",
-			"stitchingColour": null,
-			"colourFront": null,
-			"colourBack": null,
-			"shoeSize": null,
-			"quantity": null
+			"stitchingColour": "",
+			"colourFront": "",
+			"colourBack": "",
+			"shoeSize": "",
+			"quantity": ""
 		},
 		"status": {
 			"complete": "true",
@@ -188,9 +188,9 @@ const updatedEntry = {
 	},
 	"status": {
 		"complete": "false",
-		"dateCompleted": "null",
-		"hoursWorked": "null",
-		"unitPrice": "null"
+		"dateCompleted": "",
+		"hoursWorked": "",
+		"unitPrice": ""
 	}
 };
 
@@ -207,9 +207,9 @@ const expected = [
 		},
 		"status": {
 			"complete": "false",
-			"dateCompleted": "null",
-			"hoursWorked": "null",
-			"unitPrice": "null"
+			"dateCompleted": "",
+			"hoursWorked": "",
+			"unitPrice": ""
 		}
 	},
 	{
@@ -217,11 +217,11 @@ const expected = [
 		"type": "workshop",
 		"details": {
 			"title": "shoe making",
-			"stitchingColour": null,
-			"colourFront": null,
-			"colourBack": null,
-			"shoeSize": null,
-			"quantity": null
+			"stitchingColour": "",
+			"colourFront": "",
+			"colourBack": "",
+			"shoeSize": "",
+			"quantity": ""
 		},
 		"status": {
 			"complete": "true",
@@ -252,11 +252,11 @@ const expected = [
 		"type": "workshop",
 		"details": {
 			"title": "shoe making",
-			"stitchingColour": null,
-			"colourFront": null,
-			"colourBack": null,
-			"shoeSize": null,
-			"quantity": null
+			"stitchingColour": "",
+			"colourFront": "",
+			"colourBack": "",
+			"shoeSize": "",
+			"quantity": ""
 		},
 		"status": {
 			"complete": "true",
@@ -287,11 +287,11 @@ const expected = [
 		"type": "workshop",
 		"details": {
 			"title": "shoe making",
-			"stitchingColour": null,
-			"colourFront": null,
-			"colourBack": null,
-			"shoeSize": null,
-			"quantity": null
+			"stitchingColour": "",
+			"colourFront": "",
+			"colourBack": "",
+			"shoeSize": "",
+			"quantity": ""
 		},
 		"status": {
 			"complete": "true",
@@ -322,11 +322,11 @@ const expected = [
 		"type": "workshop",
 		"details": {
 			"title": "shoe making",
-			"stitchingColour": null,
-			"colourFront": null,
-			"colourBack": null,
-			"shoeSize": null,
-			"quantity": null
+			"stitchingColour": "",
+			"colourFront": "",
+			"colourBack": "",
+			"shoeSize": "",
+			"quantity": ""
 		},
 		"status": {
 			"complete": "true",
@@ -357,11 +357,11 @@ const expected = [
 		"type": "workshop",
 		"details": {
 			"title": "shoe making",
-			"stitchingColour": null,
-			"colourFront": null,
-			"colourBack": null,
-			"shoeSize": null,
-			"quantity": null
+			"stitchingColour": "",
+			"colourFront": "",
+			"colourBack": "",
+			"shoeSize": "",
+			"quantity": ""
 		},
 		"status": {
 			"complete": "true",

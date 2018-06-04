@@ -16,7 +16,7 @@ export default class Form extends React.Component {
 	state = {
 		type: "shoe",
 		details: {
-			title: null,
+			title: "",
 			colourStitching: "blue",
 			colourFront: "caramel",
 			colourBack: "caramel",
@@ -25,9 +25,9 @@ export default class Form extends React.Component {
 		},
 		status: {
 			complete: false,
-			dateCompleted: null,
-			hoursWorked: null,
-			unitPrice: null,
+			dateCompleted: "",
+			hoursWorked: "",
+			unitPrice: "",
 		},
 	}
 
@@ -35,18 +35,18 @@ export default class Form extends React.Component {
 		this.setState({ type: e.target.value });
 	}
 	handleDetailsChange = (e) => {
+		e.persist();
 		const { type } = this.state;
 
 		if (type === "shoe") {
-			const labelName = e.target.previousSibling.name;
-
-			console.log("sib: ", labelName);
-
-			this.setState({ details: { [labelName]: e.target.value } } );
+			this.setState({ details: { [e.target.id]: e.target.value } } );
 		}
 
 		if (type === "workshop") {
-			// this.setState({ details: { title: e.target.value } } );
+			console.log("type ", e.target.value);
+			this.setState(({ details: prevDetails }) => (
+				{ details: { title: prevDetails.title += e.target.value } }
+			));
 		}
 
 	}
