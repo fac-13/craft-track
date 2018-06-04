@@ -13,14 +13,18 @@ const Wrapper = styled.div.attrs({
 `;
 
 export default class Form extends React.Component {
-	state = {}
+	state = {
+		type: undefined,
+	}
 
 	render() {
+
+		const { type } = this.state;
 
 		return (
 			<Wrapper>
 				<h3>Submit Craft</h3>
-				<FormHead />
+				<FormHead type={type} />
 				<FormCraftDetails />
 				<FormCraftStatus />
 				<FormSubmitButton />
