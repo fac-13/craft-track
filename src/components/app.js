@@ -19,6 +19,7 @@ export default class App extends React.Component {
 			<React.Fragment>
 				<Frame position="top" />
 				<Landing />
+				{/* <All crafts={crafts} />				 */}
 				<Frame position="bottom" />
 			</React.Fragment>
 		);
