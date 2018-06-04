@@ -7,8 +7,8 @@ import Landing from "./landing/landing";
 import All from "./all/all";
 
 //dummy data to be passed into <All> component
-import { expected } from "./utility/dummyData";
-const crafts = expected;
+import { oldData } from "./utility/dummyData";
+const crafts = oldData;
 
 export default class App extends React.Component {
 	state = {
@@ -19,7 +19,7 @@ export default class App extends React.Component {
 		return (
 			<React.Fragment>
 				<Header />
-				<All crafts={crafts} />
+				<Landing />
 				<Footer />
 			</React.Fragment>
 		);
