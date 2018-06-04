@@ -4,6 +4,7 @@ import "../../public/style.min.css";
 import Header from "./header/header";
 import Footer from "./footer/footer";
 import Landing from "./landing/landing";
+import Form from "./form/form";
 
 export default class App extends React.Component {
 	state = {};
@@ -11,7 +12,8 @@ export default class App extends React.Component {
 		return (
 			<React.Fragment>
 				<Header />
-				<Landing />
+				{/* <Landing /> */}
+				<Form />
 				<Footer />
 			</React.Fragment>
 		);
