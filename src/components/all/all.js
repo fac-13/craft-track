@@ -15,14 +15,14 @@ const CraftItem = styled.li.attrs({
 	className: "w-30 h4 mh1"
 }) ``;
 
-const Plus = styled.button.attrs({
+const Plus = styled.div.attrs({
 	className: "fixed bottom-0 z-2"
 }) `
 	left: 50%;
 	transform: translateX(-50%);
 `;
 
-const All = ({ crafts }) => (
+const All = ({ crafts, changePage }) => (
 	<React.Fragment>
 		<CraftList>
 			{crafts.map((craft) => {
@@ -37,7 +37,7 @@ const All = ({ crafts }) => (
 
 		</CraftList>
 		<Plus>
-			{<img className="icon-width" src={icon__plus} alt="add craft" />}
+			<button onClick={(e) => changePage(e, "form")}><img className="icon-width" src={icon__plus} alt="add craft" /></button>
 		</Plus>
 	</React.Fragment>
 );
