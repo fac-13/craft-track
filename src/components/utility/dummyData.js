@@ -3,10 +3,10 @@ const oldData = [
 		"id": "1527779741527779746930",
 		"type": "shoe",
 		"details": {
-			"colour-stitching": "blue",
-			"colour-front": "caramel",
-			"colour-back": "caramel",
-			"shoe-size": "36",
+			"colourStitching": "blue",
+			"colourFront": "caramel",
+			"colourBack": "caramel",
+			"shoeSize": "36",
 			"quantity": "1"
 		},
 		"status": {
@@ -33,10 +33,10 @@ const oldData = [
 		"id": "1527779741527779746932",
 		"type": "shoe",
 		"details": {
-			"colour-stitching": "red",
-			"colour-front": "caramel",
-			"colour-back": "caramel",
-			"shoe-size": "42",
+			"colourStitching": "red",
+			"colourFront": "caramel",
+			"colourBack": "caramel",
+			"shoeSize": "42",
 			"quantity": "1"
 		},
 		"status": {
@@ -63,10 +63,10 @@ const oldData = [
 		"id": "1527779741527779746934",
 		"type": "shoe",
 		"details": {
-			"colour-stitching": "blue",
-			"colour-front": "caramel",
-			"colour-back": "caramel",
-			"shoe-size": "36",
+			"colourStitching": "blue",
+			"colourFront": "caramel",
+			"colourBack": "caramel",
+			"shoeSize": "36",
 			"quantity": "2"
 		},
 		"status": {
@@ -93,10 +93,10 @@ const oldData = [
 		"id": "1527779741527779746936",
 		"type": "shoe",
 		"details": {
-			"colour-stitching": "blue",
-			"colour-front": "caramel",
-			"colour-back": "caramel",
-			"shoe-size": "36",
+			"colourStitching": "blue",
+			"colourFront": "caramel",
+			"colourBack": "caramel",
+			"shoeSize": "36",
 			"quantity": "3"
 		},
 		"status": {
@@ -123,10 +123,10 @@ const oldData = [
 		"id": "1527779741527779746938",
 		"type": "shoe",
 		"details": {
-			"colour-stitching": "blue",
-			"colour-front": "caramel",
-			"colour-back": "caramel",
-			"shoe-size": "36",
+			"colourStitching": "blue",
+			"colourFront": "caramel",
+			"colourBack": "caramel",
+			"shoeSize": "36",
 			"quantity": "5"
 		},
 		"status": {
@@ -153,12 +153,12 @@ const oldData = [
 
 const updatedEntry = {
 	"id": "1527779741527779746930",
-	"type": "HELLO",
+	"type": "Hello",
 	"details": {
-		"colour-stitching": "blue",
-		"colour-front": "caramel",
-		"colour-back": "caramel",
-		"shoe-size": "36",
+		"colourStitching": "blue",
+		"colourFront": "caramel",
+		"colourBack": "caramel",
+		"shoeSize": "36",
 		"quantity": "1"
 	},
 	"status": {
@@ -172,12 +172,12 @@ const updatedEntry = {
 const expected = [
 	{
 		"id": "1527779741527779746930",
-		"type": "HELLO",
+		"type": "Hello",
 		"details": {
-			"colour-stitching": "blue",
-			"colour-front": "caramel",
-			"colour-back": "caramel",
-			"shoe-size": "36",
+			"colourStitching": "blue",
+			"colourFront": "caramel",
+			"colourBack": "caramel",
+			"shoeSize": "36",
 			"quantity": "1"
 		},
 		"status": {
@@ -204,10 +204,10 @@ const expected = [
 		"id": "1527779741527779746932",
 		"type": "shoe",
 		"details": {
-			"colour-stitching": "red",
-			"colour-front": "caramel",
-			"colour-back": "caramel",
-			"shoe-size": "42",
+			"colourStitching": "red",
+			"colourFront": "caramel",
+			"colourBack": "caramel",
+			"shoeSize": "42",
 			"quantity": "1"
 		},
 		"status": {
@@ -234,10 +234,10 @@ const expected = [
 		"id": "1527779741527779746934",
 		"type": "shoe",
 		"details": {
-			"colour-stitching": "blue",
-			"colour-front": "caramel",
-			"colour-back": "caramel",
-			"shoe-size": "36",
+			"colourStitching": "blue",
+			"colourFront": "caramel",
+			"colourBack": "caramel",
+			"shoeSize": "36",
 			"quantity": "2"
 		},
 		"status": {
@@ -264,10 +264,10 @@ const expected = [
 		"id": "1527779741527779746936",
 		"type": "shoe",
 		"details": {
-			"colour-stitching": "blue",
-			"colour-front": "caramel",
-			"colour-back": "caramel",
-			"shoe-size": "36",
+			"colourStitching": "blue",
+			"colourFront": "caramel",
+			"colourBack": "caramel",
+			"shoeSize": "36",
 			"quantity": "3"
 		},
 		"status": {
@@ -294,10 +294,10 @@ const expected = [
 		"id": "1527779741527779746938",
 		"type": "shoe",
 		"details": {
-			"colour-stitching": "blue",
-			"colour-front": "caramel",
-			"colour-back": "caramel",
-			"shoe-size": "36",
+			"colourStitching": "blue",
+			"colourFront": "caramel",
+			"colourBack": "caramel",
+			"shoeSize": "36",
 			"quantity": "5"
 		},
 		"status": {

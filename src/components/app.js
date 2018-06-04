@@ -3,10 +3,16 @@ import "../../public/style.min.css";
 
 import Frame from "./styled/frame/frame";
 import Landing from "./landing/landing";
+import All from "./all/all";
+
+//dummy data to be passed into <All> component
+import { oldData } from "./utility/dummyData";
+const crafts = oldData;
 
 export default class App extends React.Component {
 	state = {
-		pageView: "landing"
+		pageView: "landing",
+		crafts: crafts,
 	};
 
 	changePage = (e, page) => {
@@ -19,7 +25,7 @@ export default class App extends React.Component {
 	render() {
 		let page = <Landing changePage={this.changePage} />;
 		if (this.state.pageView == "viewall") {
-			page = <h1>All products view</h1>;
+			page = <All crafts={crafts} />;
 		} else if (this.state.pageView == "form") {
 			page = <h1>Form</h1>;
 		}
