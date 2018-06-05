@@ -37,9 +37,9 @@ export default class Form extends React.Component {
 	state = {
 		type: "shoe",
 		shoeDetails: {
-			colourStitching: "white",
-			colourFront: "white",
-			colourBack: "white",
+			colourStitching: "black",
+			colourFront: "black",
+			colourBack: "black",
 			shoeSize: "36",
 			quantity: "1",
 		},
@@ -158,12 +158,12 @@ export default class Form extends React.Component {
 		return (
 			<Wrapper>
 				<ExitButton onClick={(e) => changePage(e, "all")}><img className="icon-width" src={icon__cross} alt="cross" /></ExitButton>
-				<h3>Submit Craft</h3>
-				<FormHead type={type} handleChange={this.handleTypeChange} />
+				<h3 className="sg-heading">Submit Craft</h3>
+				<FormHead type={type} handleChange={this.handleTypeChange} style={type === "shoe" ? shoeDetails : ""} />
 				<FormCraftDetails type={type} details={details} handleChange={this.handleDetailsChange} />
 				<FormCraftStatus status={status} handleChange={this.handleStatusChange} />
 				<FormSubmitButton handleClick={this.handleFormData} />
-			</Wrapper>
+			</Wrapper >
 		);
 	}
 }

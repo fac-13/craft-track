@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import DropDownField from "../../dropDownField/dropDownField";
+import Label from "../../styled/label/label";
 
 // Todo explain what config 
 
@@ -40,7 +41,7 @@ const FormCraftStatus = ({ status, handleChange }) => {
 				complete &&
 				Object.entries(statusCopy).map(([key, value]) => (
 					<Fragment key={key}>
-						<label htmlFor={key}>{fieldConfig[key].labelText}</label>
+						<Label htmlFor={key}>{fieldConfig[key].labelText}</Label>
 						<input id={key} type={fieldConfig[key].inputType} value={value} onChange={handleChange} />
 					</Fragment>
 				))
