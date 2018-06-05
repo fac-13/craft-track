@@ -13,6 +13,8 @@ const Wrapper = styled.div.attrs({
 `;
 
 export default class Form extends React.Component {
+
+	// ! compare with dummy data property names
 	state = {
 		type: "shoe",
 		details: {
@@ -39,31 +41,46 @@ export default class Form extends React.Component {
 		const { type } = this.state;
 
 		if (type === "shoe") {
-			this.setState({ details: { [e.target.id]: e.target.value } } );
+			this.setState(({ details: prevDetails }) => {
+				return { details: { ...prevDetails, [e.target.id]: e.target.value } };
+			});
 		}
 
 		if (type === "workshop") {
-			console.log("type ", e.target.value);
-			this.setState(({ details: prevDetails }) => (
-				{ details: { title: prevDetails.title += e.target.value } }
-			));
+			// ! deletes shoe related details
+			// ! when type is changed to shoe only he title field is available
+			this.setState({ details: { title: e.target.value } });
 		}
 
 	}
 	handleStatusChange = (e) => {
-		this.setState({ type: e.target.value });
+		e.persist();
+		this.setState(({ status: prevStatus }) => {
+			let { id } = e.target;
+			let { value } = e.target;
+
+			if (id === "complete") {
+				let value = {
+					"yes": true,
+					"no": false,
+				}[value];
+			}
+
+
+			return { status: { ...prevStatus,  [id]: value } };
+		});
 	}
 
 	render() {
 
-		const { type, details } = this.state;
+		const { type, details, status } = this.state;
 
 		return (
 			<Wrapper>
 				<h3>Submit Craft</h3>
 				<FormHead type={type} handleChange={this.handleTypeChange} />
-				<FormCraftDetails type={type} handleChange={this.handleDetailsChange} details={details} />
-				<FormCraftStatus handleChange={this.handleStatusChange} />
+				<FormCraftDetails type={type} details={details} handleChange={this.handleDetailsChange} />
+				<FormCraftStatus status={status} handleChange={this.handleStatusChange} />
 				<FormSubmitButton />
 			</Wrapper>
 		);
