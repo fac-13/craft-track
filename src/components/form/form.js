@@ -17,13 +17,15 @@ export default class Form extends React.Component {
 	// ! compare with dummy data property names
 	state = {
 		type: "shoe",
-		details: {
-			title: "",
+		shoeDetails: {
 			colourStitching: "blue",
 			colourFront: "caramel",
 			colourBack: "caramel",
 			shoeSize: "36",
 			quantity: "1",
+		},
+		workshopDetails: {
+			title: "",
 		},
 		status: {
 			complete: false,
@@ -31,6 +33,7 @@ export default class Form extends React.Component {
 			hoursWorked: "",
 			unitPrice: "",
 		},
+		formData : {},
 	}
 
 	handleTypeChange = (e) => {
@@ -41,15 +44,13 @@ export default class Form extends React.Component {
 		const { type } = this.state;
 
 		if (type === "shoe") {
-			this.setState(({ details: prevDetails }) => {
-				return { details: { ...prevDetails, [e.target.id]: e.target.value } };
+			this.setState(({ shoeDetails: prevDetails }) => {
+				return { shoeDetails: { ...prevDetails, [e.target.id]: e.target.value } };
 			});
 		}
 
 		if (type === "workshop") {
-			// ! deletes shoe related details
-			// ! when type is changed to shoe only he title field is available
-			this.setState({ details: { title: e.target.value } });
+			this.setState({ workshopDetails: { title: e.target.value } });
 		}
 
 	}
@@ -60,20 +61,44 @@ export default class Form extends React.Component {
 			let { value } = e.target;
 
 			if (id === "complete") {
-				let value = {
+				value = {
 					"yes": true,
 					"no": false,
 				}[value];
 			}
 
+			return { status: { ...prevStatus, [id]: value } };
+		});
+	}
 
-			return { status: { ...prevStatus,  [id]: value } };
+	handleFormData = () => {
+		const { type, shoeDetails, workshopDetails, status } = this.state;
+		const details = type === "shoe"
+			? shoeDetails
+			: type === "workshop"
+				? workshopDetails
+				: {};
+
+		const formData = {
+			id: Date.now,
+			details,
+			status,
+		};
+
+		this.setState(formData, () => {
+			console.log("add craft to storage");
 		});
 	}
 
 	render() {
 
-		const { type, details, status } = this.state;
+		const { type, shoeDetails, workshopDetails, status } = this.state;
+		const details =
+			type === "shoe"
+				? shoeDetails
+				: type === "workshop"
+					? workshopDetails
+					: {};
 
 		return (
 			<Wrapper>
@@ -81,7 +106,7 @@ export default class Form extends React.Component {
 				<FormHead type={type} handleChange={this.handleTypeChange} />
 				<FormCraftDetails type={type} details={details} handleChange={this.handleDetailsChange} />
 				<FormCraftStatus status={status} handleChange={this.handleStatusChange} />
-				<FormSubmitButton />
+				<FormSubmitButton handleClick={this.handleFormData} />
 			</Wrapper>
 		);
 	}
