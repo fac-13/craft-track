@@ -24,7 +24,7 @@ const Landing = ({ changePage }) => (<Wrapper>
 		<Shoe style={shoeDetails} />
 	</div>
 	<p className="sg-text">Try me out and log your first craft!</p>
-	<button onClick={(e) => changePage(e, "form")}><img className="icon-width" src={icon__arrow} alt="arrow" /></button>
+	<button onClick={(e) => changePage(e, "all")}><img className="icon-width" src={icon__arrow} alt="arrow" /></button>
 </Wrapper>);
 
 export default Landing;

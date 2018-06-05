@@ -12,28 +12,26 @@ const crafts = oldData;
 
 export default class App extends React.Component {
 	state = {
-		pageView: "form",
+		pageView: "landing",
 		crafts: crafts,
 	};
 
 	changePage = (e, page) => {
 		e.preventDefault();
+		console.log("pressed");
 		this.setState(() => {
 			return { pageView: page };
 		});
 	}
 
 	render() {
-		let page = <Landing changePage={this.changePage} />;
-		if (this.state.pageView == "viewall") {
-			page = <All crafts={crafts} />;
-		} else if (this.state.pageView == "form") {
-			page = <Form changePage={this.changePage} />;
-		}
+		const { pageView } = this.state;
 		return (
 			<React.Fragment>
 				<Frame position="top" />
-				{page}
+				{pageView === "all" && <All changePage={this.changePage} crafts={crafts} />}
+				{pageView === "form" && <Form />}
+				{pageView === "landing" && <Landing changePage={this.changePage} />}
 				<Frame position="bottom" />
 			</React.Fragment>
 		);
