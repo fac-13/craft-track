@@ -7,15 +7,15 @@ import DropDownField from "../../dropDownField/dropDownField";
 const dropDownConfig = {
 	colourStitching: {
 		labelText: "stitching colour",
-		optionsArray: ["blue", "caramel"],
+		optionsArray: ["white", "cream", "black", "navy", "red"],
 	},
 	colourFront: {
 		labelText: "colour of leather: front",
-		optionsArray: ["blue", "caramel"],
+		optionsArray: ["white", "cream", "black", "navy", "red"],
 	},
 	colourBack: {
 		labelText: "colour of leather: back",
-		optionsArray: ["blue", "caramel"],
+		optionsArray: ["white", "cream", "black", "navy", "red"],
 	},
 	shoeSize: {
 		labelText: "shoe size",

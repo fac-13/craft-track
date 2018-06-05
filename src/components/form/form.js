@@ -17,9 +17,9 @@ export default class Form extends React.Component {
 	state = {
 		type: "shoe",
 		shoeDetails: {
-			colourStitching: "blue",
-			colourFront: "caramel",
-			colourBack: "caramel",
+			colourStitching: "white",
+			colourFront: "white",
+			colourBack: "white",
 			shoeSize: "36",
 			quantity: "1",
 		},
