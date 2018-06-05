@@ -33,7 +33,7 @@ export default class Form extends React.Component {
 			hoursWorked: "",
 			unitPrice: "",
 		},
-		formData : {},
+		formData: {},
 	}
 
 	handleTypeChange = (e) => {
@@ -80,12 +80,12 @@ export default class Form extends React.Component {
 				: {};
 
 		const formData = {
-			id: Date.now,
+			id: Date.now(),
 			details,
 			status,
 		};
 
-		this.setState(formData, () => {
+		this.setState({ formData }, () => {
 			console.log("add craft to storage");
 		});
 	}
