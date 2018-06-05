@@ -16,7 +16,7 @@
   },
   "pre-commit": [
     "build:prod",
-    "test",
+    "test:coverage",
     "lint"
   ],
   "repository": {
