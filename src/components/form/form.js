@@ -6,7 +6,7 @@ import FormCraftStatus from "./formCraftStatus/formCraftStatus";
 import FormSubmitButton from "./formSubmitButton/formSubmitButton";
 
 const Wrapper = styled.div.attrs({
-	className: "flex flex-column items-center justify-around"
+	// className: "flex flex-column items-center justify-around"
 }) `
 	min-height: 80vh;
 	margin: 10vh 5rem;
@@ -17,9 +17,9 @@ export default class Form extends React.Component {
 	state = {
 		type: "shoe",
 		shoeDetails: {
-			colourStitching: "white",
-			colourFront: "white",
-			colourBack: "white",
+			colourStitching: "black",
+			colourFront: "black",
+			colourBack: "black",
 			shoeSize: "36",
 			quantity: "1",
 		},
@@ -100,8 +100,8 @@ export default class Form extends React.Component {
 
 		return (
 			<Wrapper>
-				<h3>Submit Craft</h3>
-				<FormHead type={type} handleChange={this.handleTypeChange} />
+				<h3 className="sg-heading">Submit Craft</h3>
+				<FormHead type={type} handleChange={this.handleTypeChange} style={type === "shoe" ? shoeDetails : ""} />
 				<FormCraftDetails type={type} details={details} handleChange={this.handleDetailsChange} />
 				<FormCraftStatus status={status} handleChange={this.handleStatusChange} />
 				<FormSubmitButton handleClick={this.handleFormData} />
