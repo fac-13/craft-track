@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import DropDownField from "../../dropDownField/dropDownField";
 
+// TODO add icons for shoe and Scissor
 const Shoe = () => <h3>shoe</h3>;
 const Scissor = () => <h3>scissor</h3>;
 
