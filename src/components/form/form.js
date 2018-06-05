@@ -5,13 +5,8 @@ import FormCraftDetails from "./formCraftDetails/formCraftDetails";
 import FormCraftStatus from "./formCraftStatus/formCraftStatus";
 import FormSubmitButton from "./formSubmitButton/formSubmitButton";
 import icon__cross from "../../../public/assets/icon__cross.svg";
-
-const Wrapper = styled.div.attrs({
-	className: "relative flex flex-column items-center justify-around"
-}) `
-	min-height: 80vh;
-	margin: 10vh 5rem;
-`;
+import Heading from "../styled/heading/heading";
+import Wrapper from "../styled/wrapper/wrapper";
 
 const ExitButton = styled.button.attrs({
 	className: "absolute"
@@ -78,7 +73,7 @@ export default class Form extends React.Component {
 		});
 	}
 
-	handleFormData = () => {
+	handleFormData = (e) => {
 		const { type, shoeDetails, workshopDetails, status } = this.state;
 		const details = type === "shoe"
 			? shoeDetails
@@ -95,6 +90,8 @@ export default class Form extends React.Component {
 		this.setState({ formData }, () => {
 			console.log("add craft to storage");
 		});
+
+		this.props.changePage(e, "all");
 	}
 
 	render() {
@@ -111,11 +108,11 @@ export default class Form extends React.Component {
 		return (
 			<Wrapper>
 				<ExitButton onClick={(e) => changePage(e, "all")}><img className="icon-width" src={icon__cross} alt="cross" /></ExitButton>
-				<h3 className="sg-heading">Submit Craft</h3>
+				<Heading>Submit Craft</Heading>
 				<FormHead type={type} handleChange={this.handleTypeChange} style={type === "shoe" ? shoeDetails : ""} />
 				<FormCraftDetails type={type} details={details} handleChange={this.handleDetailsChange} />
 				<FormCraftStatus status={status} handleChange={this.handleStatusChange} />
-				<FormSubmitButton handleClick={this.handleFormData} />
+				<FormSubmitButton handleClick={(e) => this.handleFormData(e)} />
 			</Wrapper >
 		);
 	}

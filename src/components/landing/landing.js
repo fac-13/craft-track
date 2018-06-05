@@ -1,14 +1,10 @@
 import React from "react";
-import styled from "styled-components";
 import Shoe from "../styled/shoe/shoe";
+import styled from "styled-components";
+import Heading from "../styled/heading/heading";
+import Wrapper from "../styled/wrapper/wrapper";
+import ParagraphText from "../styled/paragraphText/paragraphText";
 import icon__arrow from "../../../public/assets/icon__arrow.svg";
-
-const Wrapper = styled.div.attrs({
-	className: "flex flex-column items-center justify-around"
-}) `
-	min-height: 80vh;
-	margin: 10vh 5rem;
-`;
 
 const shoeDetails = {
 	colourStitching: "#777",
@@ -17,14 +13,21 @@ const shoeDetails = {
 	colourBack: "#ccc",
 };
 
+const Center = styled.div.attrs({
+	className: "flex flex-column items-center justify-around"
+}) ``;
+
 const Landing = ({ changePage }) => (<Wrapper>
-	<h1 className="sg-heading">Welcome to Craft Track!</h1>
-	<p className="sg-text">This is an app to log the work you’ve done for Juta Shoes.</p>
-	<div className="ma4">
-		<Shoe style={shoeDetails} />
-	</div>
-	<p className="sg-text">Try me out and log your first craft!</p>
+	<Center>
+		<Heading>Welcome to Craft Track!</Heading>
+		<ParagraphText>This is an app to log the work you’ve done for Juta Shoes.</ParagraphText>
+		<div className="ma4">
+			<Shoe style={shoeDetails} />
+		</div>
+		<ParagraphText>Try me out and log your first craft!</ParagraphText>
+	</Center>
 	<button onClick={(e) => changePage(e, "all")}><img className="icon-width" src={icon__arrow} alt="arrow" /></button>
+
 </Wrapper>);
 
 export default Landing;
