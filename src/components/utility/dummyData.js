@@ -50,7 +50,7 @@ const oldData = [
 		"id": "1527779741527779746933",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"			
+			"title": "shoe making"
 		},
 		"status": {
 			"complete": "true",
@@ -80,7 +80,7 @@ const oldData = [
 		"id": "1527779741527779746935",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"			
+			"title": "shoe making"		
 		},
 		"status": {
 			"complete": "true",
@@ -110,7 +110,7 @@ const oldData = [
 		"id": "1527779741527779746937",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"			
+			"title": "shoe making"		
 		},
 		"status": {
 			"complete": "true",
@@ -140,7 +140,7 @@ const oldData = [
 		"id": "1527779741527779746939",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"			
+			"title": "shoe making"		
 		},
 		"status": {
 			"complete": "true",
@@ -191,7 +191,7 @@ const expected = [
 		"id": "1527779741527779746931",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"			
+			"title": "shoe making"		
 		},
 		"status": {
 			"complete": "true",
@@ -221,7 +221,7 @@ const expected = [
 		"id": "1527779741527779746933",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"			
+			"title": "shoe making"		
 		},
 		"status": {
 			"complete": "true",
@@ -251,7 +251,7 @@ const expected = [
 		"id": "1527779741527779746935",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"			
+			"title": "shoe making"		
 		},
 		"status": {
 			"complete": "true",
@@ -281,7 +281,7 @@ const expected = [
 		"id": "1527779741527779746937",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"			
+			"title": "shoe making"		
 		},
 		"status": {
 			"complete": "true",
@@ -311,7 +311,7 @@ const expected = [
 		"id": "1527779741527779746939",
 		"type": "workshop",
 		"details": {
-			"title": "shoe making"			
+			"title": "shoe making"		
 		},
 		"status": {
 			"complete": "true",
