@@ -6,6 +6,17 @@ import FormCraftStatus from "./formCraftStatus/formCraftStatus";
 import FormSubmitButton from "./formSubmitButton/formSubmitButton";
 import icon__cross from "../../../public/assets/icon__cross.svg";
 
+import { credentials } from "../../../token";
+const { accessKeyId, secretAccessKey } = credentials;
+
+// Load the AWS SDK for Node.js
+const AWS = require("aws-sdk");
+// Set the region 
+AWS.config.update({ region: "eu-west-2", accessKeyId: accessKeyId, secretAccessKey: secretAccessKey });
+
+// Create the DynamoDB service object
+const ddb = new AWS.DynamoDB({ apiVersion: "2012-10-08" });
+
 const Wrapper = styled.div.attrs({
 	className: "relative flex flex-column items-center justify-around"
 }) `
@@ -33,7 +44,7 @@ export default class Form extends React.Component {
 			quantity: "1",
 		},
 		workshopDetails: {
-			title: "",
+			title: " ",
 		},
 		status: {
 			complete: false,
@@ -88,12 +99,48 @@ export default class Form extends React.Component {
 
 		const formData = {
 			id: Date.now(),
+			type,
 			details,
 			status,
 		};
 
 		this.setState({ formData }, () => {
-			console.log("add craft to storage");
+			const newFormData = this.state.formData;
+			let params;
+
+			if (newFormData.type === "shoe") {
+				params = {
+					TableName: "Crafts",
+					Item: {
+						"id": { N: newFormData.id.toString() },
+						"type": { S: newFormData.type },
+						"colourStitching": { S: newFormData.details.colourStitching },
+						"colourFront": { S: newFormData.details.colourFront },
+						"colourBack": { S: newFormData.details.colourBack },
+						"shoeSize": { N: newFormData.details.shoeSize },
+						"quantity": { N: newFormData.details.quantity },
+					}
+				};
+			}
+			if (newFormData.type === "workshop") {
+				params = {
+					TableName: "Crafts",
+					Item: {
+						"id": { N: newFormData.id.toString() },
+						"type": { S: newFormData.type },
+						"title": { S: newFormData.details.title },
+					}
+				};
+			}
+
+			// Call DynamoDB to add the item to the table
+			ddb.putItem(params, function (err, data) {
+				if (err) {
+					console.log("Error", err);
+				} else {
+					console.log("Success", data);
+				}
+			});
 		});
 	}
 
