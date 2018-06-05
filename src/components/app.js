@@ -3,6 +3,7 @@ import "../../public/style.min.css";
 
 import Frame from "./styled/frame/frame";
 import Landing from "./landing/landing";
+import Form from "./form/form";
 import All from "./all/all";
 
 //dummy data to be passed into <All> component
@@ -29,7 +30,7 @@ export default class App extends React.Component {
 			<React.Fragment>
 				<Frame position="top" />
 				{pageView === "all" && <All changePage={this.changePage} crafts={crafts} />}
-				{pageView === "form" && <h1>Form</h1>}
+				{pageView === "form" && <Form />}
 				{pageView === "landing" && <Landing changePage={this.changePage} />}
 				<Frame position="bottom" />
 			</React.Fragment>
