@@ -1,6 +1,9 @@
 import React, { Fragment } from "react";
 import DropDownField from "../../dropDownField/dropDownField";
 
+// For each property of <Form /> state.details when type is shoe,
+// A configuration for how to render a drop down select fields
+// with correct label text and select options
 const dropDownConfig = {
 	colourStitching: {
 		labelText: "stitching colour",
@@ -24,16 +27,14 @@ const dropDownConfig = {
 	},
 };
 
-
+// When shoe is selected 5 drop down fields are generated
+// When workshop is selected a single text input field is generated
 const FormCraftDetails = ({ type, handleChange, details }) => {
-
-	const shoeDetails = {...details};
-	delete shoeDetails.title;
 	return (
 		<Fragment>
 			{
 				type === "shoe" &&
-				Object.entries(shoeDetails).map(([ key, value ]) => {
+				Object.entries(details).map(([ key, value ]) => {
 					return <DropDownField key={key} id={key} value={value} handleChange={handleChange} {...dropDownConfig[key]} />;
 				})
 			}
