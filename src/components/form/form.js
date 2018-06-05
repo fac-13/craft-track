@@ -14,7 +14,6 @@ const Wrapper = styled.div.attrs({
 
 export default class Form extends React.Component {
 
-	// ! compare with dummy data property names
 	state = {
 		type: "shoe",
 		shoeDetails: {
@@ -57,8 +56,7 @@ export default class Form extends React.Component {
 	handleStatusChange = (e) => {
 		e.persist();
 		this.setState(({ status: prevStatus }) => {
-			let { id } = e.target;
-			let { value } = e.target;
+			let { id, value } = e.target;
 
 			if (id === "complete") {
 				value = {
