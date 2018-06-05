@@ -30,7 +30,7 @@ export default class App extends React.Component {
 			<React.Fragment>
 				<Frame position="top" />
 				{pageView === "all" && <All changePage={this.changePage} crafts={crafts} />}
-				{pageView === "form" && <Form />}
+				{pageView === "form" && <Form changePage={this.changePage} />}
 				{pageView === "landing" && <Landing changePage={this.changePage} />}
 				<Frame position="bottom" />
 			</React.Fragment>
