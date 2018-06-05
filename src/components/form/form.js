@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+
 import FormHead from "./formHead/formHead";
 import FormCraftDetails from "./formCraftDetails/formCraftDetails";
 import FormCraftStatus from "./formCraftStatus/formCraftStatus";
-import FormSubmitButton from "./formSubmitButton/formSubmitButton";
-import icon__cross from "../../../public/assets/icon__cross.svg";
+import Icon from "../styled/icon/icon";
 import Heading from "../styled/heading/heading";
 import Wrapper from "../styled/wrapper/wrapper";
 
-const ExitButton = styled.button.attrs({
+const PositionExitButton = styled.div.attrs({
 	className: "absolute"
 }) `
 max-width: 4.5rem;
@@ -107,12 +107,14 @@ export default class Form extends React.Component {
 
 		return (
 			<Wrapper>
-				<ExitButton onClick={(e) => changePage(e, "all")}><img className="icon-width" src={icon__cross} alt="cross" /></ExitButton>
+				<PositionExitButton>
+					<Icon changePage={(e) => changePage(e, "all")} iconType="cross" width="5rem" />
+				</PositionExitButton>
 				<Heading>Submit Craft</Heading>
 				<FormHead type={type} handleChange={this.handleTypeChange} style={type === "shoe" ? shoeDetails : ""} />
 				<FormCraftDetails type={type} details={details} handleChange={this.handleDetailsChange} />
 				<FormCraftStatus status={status} handleChange={this.handleStatusChange} />
-				<FormSubmitButton handleClick={(e) => this.handleFormData(e)} />
+				<Icon changePage={(e) => this.handleFormData(e)} iconType="tick" width="7rem" />
 			</Wrapper >
 		);
 	}
