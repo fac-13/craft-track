@@ -7,16 +7,6 @@ import FormSubmitButton from "./formSubmitButton/formSubmitButton";
 import icon__cross from "../../../public/assets/icon__cross.svg";
 import postData from "../../utility/postData";
 
-const { accessKeyId, secretAccessKey } = credentials;
-
-// Load the AWS SDK for Node.js
-const AWS = require("aws-sdk");
-// Set the region 
-AWS.config.update({ region: "eu-west-2", accessKeyId: accessKeyId, secretAccessKey: secretAccessKey });
-
-// Create the DynamoDB service object
-const ddb = new AWS.DynamoDB({ apiVersion: "2012-10-08" });
-
 const Wrapper = styled.div.attrs({
 	className: "relative flex flex-column items-center justify-around"
 })`
