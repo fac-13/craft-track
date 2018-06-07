@@ -1,12 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import FormHead from "./formHead/formHead";
-import FormCraftDetails from "./formCraftDetails/formCraftDetails";
-import FormCraftStatus from "./formCraftStatus/formCraftStatus";
+import FormDetails from "./formDetails/formDetails";
 import FormSubmitButton from "./formSubmitButton/formSubmitButton";
 import icon__cross from "../../../public/assets/icon__cross.svg";
 
-const Wrapper = styled.div.attrs({
+const FormWrapper = styled.form.attrs({
 	className: "relative flex flex-column items-center justify-around"
 }) `
 	min-height: 80vh;
@@ -24,99 +22,58 @@ right: -3rem;
 export default class Form extends React.Component {
 
 	state = {
-		type: "shoe",
-		shoeDetails: {
-			colourStitching: "black",
-			colourFront: "black",
-			colourBack: "black",
-			shoeSize: "36",
-			quantity: "1",
+		formData: {
+			shoeCut: 0,
+			shoeSew: 0,
+			slipperCut: 0,
+			slipperSew: 0,
+			other: {
+				description: "",
+				quantity: 0,
+			},
 		},
-		workshopDetails: {
-			title: "",
-		},
-		status: {
-			complete: false,
-			dateCompleted: "",
-			hoursWorked: "",
-			unitPrice: "",
-		},
-		formData: {},
 	}
 
-	handleTypeChange = (e) => {
-		this.setState({ type: e.target.value });
-	}
-	handleDetailsChange = (e) => {
-		e.persist();
-		const { type } = this.state;
+	// handleDetailsChange = (e) => {
+	// 	e.persist();
+	// 	this.setState(({ formData: prevFormData }) => {
+	// 		return { formData: { ...prevFormData, [e.target.id]: e.target.value } };
+	// 	});		
+	// }
 
-		if (type === "shoe") {
-			this.setState(({ shoeDetails: prevDetails }) => {
-				return { shoeDetails: { ...prevDetails, [e.target.id]: e.target.value } };
-			});
-		}
+	// handleFormData = () => {
+	// 	const { type, shoeDetails, workshopDetails, status } = this.state;
+	// 	const details = type === "shoe"
+	// 		? shoeDetails
+	// 		: type === "workshop"
+	// 			? workshopDetails
+	// 			: {};
 
-		if (type === "workshop") {
-			this.setState({ workshopDetails: { title: e.target.value } });
-		}
+	// 	const formData = {
+	// 		id: Date.now(),
+	// 		details,
+	// 		status,
+	// 	};
 
-	}
-	handleStatusChange = (e) => {
-		e.persist();
-		this.setState(({ status: prevStatus }) => {
-			let { id, value } = e.target;
+	// 	this.setState({ formData }, () => {
+	// 		console.log("add craft to storage");
+	// 	});
+	// }
 
-			if (id === "complete") {
-				value = {
-					"yes": true,
-					"no": false,
-				}[value];
-			}
 
-			return { status: { ...prevStatus, [id]: value } };
-		});
-	}
 
-	handleFormData = () => {
-		const { type, shoeDetails, workshopDetails, status } = this.state;
-		const details = type === "shoe"
-			? shoeDetails
-			: type === "workshop"
-				? workshopDetails
-				: {};
-
-		const formData = {
-			id: Date.now(),
-			details,
-			status,
-		};
-
-		this.setState({ formData }, () => {
-			console.log("add craft to storage");
-		});
-	}
 
 	render() {
-
-		const { type, shoeDetails, workshopDetails, status } = this.state;
-		const details =
-			type === "shoe"
-				? shoeDetails
-				: type === "workshop"
-					? workshopDetails
-					: {};
+		const { formData } = this.state;
 		const { changePage } = this.props;
 
 		return (
-			<Wrapper>
+			<FormWrapper>
 				<ExitButton onClick={(e) => changePage(e, "all")}><img className="icon-width" src={icon__cross} alt="cross" /></ExitButton>
 				<h3 className="sg-heading">Submit Craft</h3>
-				<FormHead type={type} handleChange={this.handleTypeChange} style={type === "shoe" ? shoeDetails : ""} />
-				<FormCraftDetails type={type} details={details} handleChange={this.handleDetailsChange} />
-				<FormCraftStatus status={status} handleChange={this.handleStatusChange} />
+				<FormDetails formData={formData} />
 				<FormSubmitButton handleClick={this.handleFormData} />
-			</Wrapper >
+			</FormWrapper >
 		);
 	}
 }
