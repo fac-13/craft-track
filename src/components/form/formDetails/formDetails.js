@@ -12,7 +12,7 @@ const Incrementor = ({ id, quantity, handleSub, handleAdd }) => {
 			<Label htmlFor={id}>{id}</Label>
 			<FlexRowDiv>
 				<button type="button" onClick={handleSub} >➖</button>
-				{/* TODO pulse animate number change */}
+
 				<input id={id} type="number" value={quantity} />
 				<button type="button" onClick={handleAdd} >➕</button>
 			</FlexRowDiv>
@@ -21,9 +21,11 @@ const Incrementor = ({ id, quantity, handleSub, handleAdd }) => {
 };
 
 const FormDetails = ({ formData, handleSub, handleAdd, handleChange }) => {
-	const { other } = formData;
+	const { otherDescription, otherQuantity } = formData;
 	const dataObj = { ...formData };
 	delete dataObj.other;
+	delete dataObj.otherDescription;
+	delete dataObj.otherQuantity;
 	return (
 		<Fragment>
 			{
@@ -42,16 +44,16 @@ const FormDetails = ({ formData, handleSub, handleAdd, handleChange }) => {
 				})
 			}
 
-			<Label htmlFor="otherDescription" >other description</Label>
+			<Label htmlFor="otherDescription" >otherDescription</Label>
 			<input
 				id="otherDescription"
 				type="text"
-				value={other.description}
+				value={otherDescription}
 				onChange={handleChange}
 			/>
 			<Incrementor
 				id={"otherQuantity"}
-				quantity={other.quantity}
+				quantity={otherQuantity}
 				handleSub={handleSub}
 				handleAdd={handleAdd}
 			/>

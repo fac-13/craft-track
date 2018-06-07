@@ -27,112 +27,57 @@ export default class Form extends React.Component {
 			shoeSew: 0,
 			slipperCut: 0,
 			slipperSew: 0,
-			other: {
-				description: "",
-				quantity: 0,
-			},
+			otherDescription: "",
+			otherQuantity: 0,
 		},
 	}
-
-	// handleDetailsChange = (e) => {
-	// 	e.persist();
-	// 	this.setState(({ formData: prevFormData }) => {
-	// 		return { formData: { ...prevFormData, [e.target.id]: e.target.value } };
-	// 	});		
-	// }
-
-	// handleFormData = () => {
-	// 	const { type, shoeDetails, workshopDetails, status } = this.state;
-	// 	const details = type === "shoe"
-	// 		? shoeDetails
-	// 		: type === "workshop"
-	// 			? workshopDetails
-	// 			: {};
-
-	// 	const formData = {
-	// 		id: Date.now(),
-	// 		details,
-	// 		status,
-	// 	};
-
-	// 	this.setState({ formData }, () => {
-	// 		console.log("add craft to storage");
-	// 	});
-	// }
-
 
 	handleAdd = (event) => {
 		event.preventDefault();
 		const { id, value } = event.target.previousSibling;
-
-		if (id === "otherQuantity") {
-			this.setState(({ formData: prevFormData }) => {
-				return {
-					formData: {
-						...prevFormData,
-						other: {
-							quantity: +value + 1,
-						},
-					},
-				};
-			});
-		} else {
-			this.setState(({ formData: prevFormData }) => {
-				return {
-					formData: {
-						...prevFormData,
-						[id]: +value + 1,
-					}
-				};
-			});
-		}
+		this.setState(({ formData: prevFormData }) => {
+			return {
+				formData: {
+					...prevFormData,
+					[id]: +value + 1,
+				}
+			};
+		});
+		
 	}
 
 	handleSub = (event) => {
 		event.preventDefault();
 		const { id, value } = event.target.nextSibling;
-
-		// if (this.status.formData[id] >= 0 ) {
 		if (value  > 0 ) {
-			if (id === "otherQuantity") {
-				this.setState(({ formData: prevFormData }) => {
-					return {
-						formData: {
-							...prevFormData,
-							other: {
-								description: prevFormData.other.description,
-								quantity: +value - 1,
-							},
-						},
-					};
-				});
-			} else {
-				this.setState(({ formData: prevFormData }) => {
-					return {
-						formData: {
-							...prevFormData,
-							[id]: +value - 1,
-						}
-					};
-				});
-			}
+			this.setState(({ formData: prevFormData }) => {
+				return {
+					formData: {
+						...prevFormData,
+						[id]: +value - 1,
+					}
+				};
+			});	
 		}
 	}
 
 	
-	handleDescriptionInput = ({ target: { value }}) => {
+	handleDescriptionInput = ({ target: { id, value }}) => {
 		this.setState(({ formData: prevFormData }) => {
 			return {
 				formData: {
 					...prevFormData,
-					other: {
-						description: value,
-						quantity: prevFormData.other.quantity,
-					}
-
+					[id]: value,
 				}
 			};
 		});
+	}
+
+	handleFormData = (event) => {
+		event.preventDefault();
+		const { formData } = this.state;
+		console.log("add craft to storage", formData);
+		// reset state after craft has been submitted
 	}
 
 
