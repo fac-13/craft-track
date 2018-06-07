@@ -61,6 +61,60 @@ export default class Form extends React.Component {
 	// }
 
 
+	handleAdd = (event) => {
+		const { id, value } = event.target.previousSibling;
+
+		if (id === "otherQuantity") {
+			this.setState(({ formData: prevFormData }) => {
+				return {
+					formData: {
+						...prevFormData,
+						other: {
+							quantity: +value + 1,
+						},
+					},
+				};
+			});
+		} else {
+			this.setState(({ formData: prevFormData }) => {
+				return {
+					formData: {
+						...prevFormData,
+						[id]: +value + 1,
+					}
+				};
+			});
+		}
+	}
+
+	handleSub = (event) => {
+		const { id, value } = event.target.nextSibling;
+
+		// if (this.status.formData[id] >= 0 ) {
+		if (value  > 0 ) {
+			if (id === "otherQuantity") {
+				this.setState(({ formData: prevFormData }) => {
+					return {
+						formData: {
+							...prevFormData,
+							other: {
+								quantity: +value - 1,
+							},
+						},
+					};
+				});
+			} else {
+				this.setState(({ formData: prevFormData }) => {
+					return {
+						formData: {
+							...prevFormData,
+							[id]: +value - 1,
+						}
+					};
+				});
+			}
+		}
+	}
 
 
 	render() {
@@ -71,7 +125,7 @@ export default class Form extends React.Component {
 			<FormWrapper>
 				<ExitButton onClick={(e) => changePage(e, "all")}><img className="icon-width" src={icon__cross} alt="cross" /></ExitButton>
 				<h3 className="sg-heading">Submit Craft</h3>
-				<FormDetails formData={formData} />
+				<FormDetails formData={formData} handleAdd={this.handleAdd} handleSub={this.handleSub} />
 				<FormSubmitButton handleClick={this.handleFormData} />
 			</FormWrapper >
 		);
