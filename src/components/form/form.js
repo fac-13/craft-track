@@ -5,6 +5,7 @@ import FormCraftDetails from "./formCraftDetails/formCraftDetails";
 import FormCraftStatus from "./formCraftStatus/formCraftStatus";
 import FormSubmitButton from "./formSubmitButton/formSubmitButton";
 import icon__cross from "../../../public/assets/icon__cross.svg";
+import postData from "../../utility/postData";
 
 import { credentials } from "../../../token";
 const { accessKeyId, secretAccessKey } = credentials;
@@ -19,14 +20,14 @@ const ddb = new AWS.DynamoDB({ apiVersion: "2012-10-08" });
 
 const Wrapper = styled.div.attrs({
 	className: "relative flex flex-column items-center justify-around"
-}) `
+})`
 	min-height: 80vh;
 	margin: 10vh 5rem;
 `;
 
 const ExitButton = styled.button.attrs({
 	className: "absolute"
-}) `
+})`
 max-width: 4.5rem;
 top: -2rem;
 right: -3rem;
@@ -132,15 +133,9 @@ export default class Form extends React.Component {
 					}
 				};
 			}
-
-			// Call DynamoDB to add the item to the table
-			ddb.putItem(params, function (err, data) {
-				if (err) {
-					console.log("Error", err);
-				} else {
-					console.log("Success", data);
-				}
-			});
+			postData("http://localhost:3000/postItem", params)
+				.then((res) => console.log(`Data added! Response: ${res}`))
+				.catch((err) => console.log(err));
 		});
 	}
 
