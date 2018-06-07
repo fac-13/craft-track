@@ -7,7 +7,6 @@ import FormSubmitButton from "./formSubmitButton/formSubmitButton";
 import icon__cross from "../../../public/assets/icon__cross.svg";
 import postData from "../../utility/postData";
 
-import { credentials } from "../../../token";
 const { accessKeyId, secretAccessKey } = credentials;
 
 // Load the AWS SDK for Node.js
