@@ -62,6 +62,7 @@ export default class Form extends React.Component {
 
 
 	handleAdd = (event) => {
+		event.preventDefault();
 		const { id, value } = event.target.previousSibling;
 
 		if (id === "otherQuantity") {
@@ -88,6 +89,7 @@ export default class Form extends React.Component {
 	}
 
 	handleSub = (event) => {
+		event.preventDefault();
 		const { id, value } = event.target.nextSibling;
 
 		// if (this.status.formData[id] >= 0 ) {
@@ -98,6 +100,7 @@ export default class Form extends React.Component {
 						formData: {
 							...prevFormData,
 							other: {
+								description: prevFormData.other.description,
 								quantity: +value - 1,
 							},
 						},
@@ -116,6 +119,22 @@ export default class Form extends React.Component {
 		}
 	}
 
+	
+	handleDescriptionInput = ({ target: { value }}) => {
+		this.setState(({ formData: prevFormData }) => {
+			return {
+				formData: {
+					...prevFormData,
+					other: {
+						description: value,
+						quantity: prevFormData.other.quantity,
+					}
+
+				}
+			};
+		});
+	}
+
 
 	render() {
 		const { formData } = this.state;
@@ -125,7 +144,12 @@ export default class Form extends React.Component {
 			<FormWrapper>
 				<ExitButton onClick={(e) => changePage(e, "all")}><img className="icon-width" src={icon__cross} alt="cross" /></ExitButton>
 				<h3 className="sg-heading">Submit Craft</h3>
-				<FormDetails formData={formData} handleAdd={this.handleAdd} handleSub={this.handleSub} />
+				<FormDetails
+					formData={formData}
+					handleAdd={this.handleAdd}
+					handleSub={this.handleSub}
+					handleChange={this.handleDescriptionInput}
+				/>
 				<FormSubmitButton handleClick={this.handleFormData} />
 			</FormWrapper >
 		);

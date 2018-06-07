@@ -11,10 +11,10 @@ const Incrementor = ({ id, quantity, handleSub, handleAdd }) => {
 		<Fragment>
 			<Label htmlFor={id}>{id}</Label>
 			<FlexRowDiv>
-				<input type="button" onClick={handleSub} value="-" />
+				<button type="button" onClick={handleSub} >➖</button>
 				{/* TODO pulse animate number change */}
 				<input id={id} type="number" value={quantity} />
-				<input type="button" onClick={handleAdd} value="+" />
+				<button type="button" onClick={handleAdd} >➕</button>
 			</FlexRowDiv>
 		</Fragment>
 	);
