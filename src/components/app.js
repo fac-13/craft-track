@@ -7,7 +7,7 @@ import Form from "./form/form";
 import All from "./all/all";
 
 //dummy data to be passed into <All> component
-import { oldData } from "./utility/dummyData";
+import { oldData } from "../utility/dummyData";
 const crafts = oldData;
 
 export default class App extends React.Component {

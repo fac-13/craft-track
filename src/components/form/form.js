@@ -5,17 +5,18 @@ import FormCraftDetails from "./formCraftDetails/formCraftDetails";
 import FormCraftStatus from "./formCraftStatus/formCraftStatus";
 import FormSubmitButton from "./formSubmitButton/formSubmitButton";
 import icon__cross from "../../../public/assets/icon__cross.svg";
+import postData from "../../utility/postData";
 
 const Wrapper = styled.div.attrs({
 	className: "relative flex flex-column items-center justify-around"
-}) `
+})`
 	min-height: 80vh;
 	margin: 10vh 5rem;
 `;
 
 const ExitButton = styled.button.attrs({
 	className: "absolute"
-}) `
+})`
 max-width: 4.5rem;
 top: -2rem;
 right: -3rem;
@@ -33,7 +34,7 @@ export default class Form extends React.Component {
 			quantity: "1",
 		},
 		workshopDetails: {
-			title: "",
+			title: " ",
 		},
 		status: {
 			complete: false,
@@ -88,12 +89,42 @@ export default class Form extends React.Component {
 
 		const formData = {
 			id: Date.now(),
+			type,
 			details,
 			status,
 		};
 
 		this.setState({ formData }, () => {
-			console.log("add craft to storage");
+			const newFormData = this.state.formData;
+			let params;
+
+			if (newFormData.type === "shoe") {
+				params = {
+					TableName: "Crafts",
+					Item: {
+						"id": { N: newFormData.id.toString() },
+						"type": { S: newFormData.type },
+						"colourStitching": { S: newFormData.details.colourStitching },
+						"colourFront": { S: newFormData.details.colourFront },
+						"colourBack": { S: newFormData.details.colourBack },
+						"shoeSize": { N: newFormData.details.shoeSize },
+						"quantity": { N: newFormData.details.quantity },
+					}
+				};
+			}
+			if (newFormData.type === "workshop") {
+				params = {
+					TableName: "Crafts",
+					Item: {
+						"id": { N: newFormData.id.toString() },
+						"type": { S: newFormData.type },
+						"title": { S: newFormData.details.title },
+					}
+				};
+			}
+			postData("http://localhost:3000/postItem", params)
+				.then((res) => console.log(`Data added! Response: ${res}`))
+				.catch((err) => console.log(err));
 		});
 	}
 
