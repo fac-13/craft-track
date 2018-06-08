@@ -7,10 +7,11 @@ import FormCraftStatus from "./formCraftStatus/formCraftStatus";
 import Icon from "../styled/icon/icon";
 import Heading from "../styled/heading/heading";
 import Wrapper from "../styled/wrapper/wrapper";
+import postData from "../../utility/postData";
 
 const PositionExitButton = styled.div.attrs({
 	className: "absolute"
-}) `
+})`
 max-width: 4.5rem;
 top: -2rem;
 right: -3rem;
@@ -28,7 +29,7 @@ export default class Form extends React.Component {
 			quantity: "1",
 		},
 		workshopDetails: {
-			title: "",
+			title: " ",
 		},
 		status: {
 			complete: false,
@@ -83,12 +84,42 @@ export default class Form extends React.Component {
 
 		const formData = {
 			id: Date.now(),
+			type,
 			details,
 			status,
 		};
 
 		this.setState({ formData }, () => {
-			console.log("add craft to storage");
+			const newFormData = this.state.formData;
+			let params;
+
+			if (newFormData.type === "shoe") {
+				params = {
+					TableName: "Crafts",
+					Item: {
+						"id": { N: newFormData.id.toString() },
+						"type": { S: newFormData.type },
+						"colourStitching": { S: newFormData.details.colourStitching },
+						"colourFront": { S: newFormData.details.colourFront },
+						"colourBack": { S: newFormData.details.colourBack },
+						"shoeSize": { N: newFormData.details.shoeSize },
+						"quantity": { N: newFormData.details.quantity },
+					}
+				};
+			}
+			if (newFormData.type === "workshop") {
+				params = {
+					TableName: "Crafts",
+					Item: {
+						"id": { N: newFormData.id.toString() },
+						"type": { S: newFormData.type },
+						"title": { S: newFormData.details.title },
+					}
+				};
+			}
+			postData("http://localhost:3000/postItem", params)
+				.then((res) => console.log(`Data added! Response: ${res}`))
+				.catch((err) => console.log(err));
 		});
 
 		this.props.changePage(e, "all");
