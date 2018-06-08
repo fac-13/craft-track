@@ -12,7 +12,7 @@ const crafts = oldData;
 
 export default class App extends React.Component {
 	state = {
-		pageView: "form",
+		pageView: "landing",
 		crafts: crafts,
 	};
 

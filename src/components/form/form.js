@@ -1,20 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+
 import FormHead from "./formHead/formHead";
 import FormCraftDetails from "./formCraftDetails/formCraftDetails";
 import FormCraftStatus from "./formCraftStatus/formCraftStatus";
-import FormSubmitButton from "./formSubmitButton/formSubmitButton";
-import icon__cross from "../../../public/assets/icon__cross.svg";
+import Icon from "../styled/icon/icon";
+import Heading from "../styled/heading/heading";
+import Wrapper from "../styled/wrapper/wrapper";
 import postData from "../../utility/postData";
 
-const Wrapper = styled.div.attrs({
-	className: "relative flex flex-column items-center justify-around"
-})`
-	min-height: 80vh;
-	margin: 10vh 5rem;
-`;
-
-const ExitButton = styled.button.attrs({
+const PositionExitButton = styled.div.attrs({
 	className: "absolute"
 })`
 max-width: 4.5rem;
@@ -79,7 +74,7 @@ export default class Form extends React.Component {
 		});
 	}
 
-	handleFormData = () => {
+	handleFormData = (e) => {
 		const { type, shoeDetails, workshopDetails, status } = this.state;
 		const details = type === "shoe"
 			? shoeDetails
@@ -126,6 +121,8 @@ export default class Form extends React.Component {
 				.then((res) => console.log(`Data added! Response: ${res}`))
 				.catch((err) => console.log(err));
 		});
+
+		this.props.changePage(e, "all");
 	}
 
 	render() {
@@ -141,12 +138,14 @@ export default class Form extends React.Component {
 
 		return (
 			<Wrapper>
-				<ExitButton onClick={(e) => changePage(e, "all")}><img className="icon-width" src={icon__cross} alt="cross" /></ExitButton>
-				<h3 className="sg-heading">Submit Craft</h3>
+				<PositionExitButton>
+					<Icon changePage={(e) => changePage(e, "all")} iconType="cross" width="5rem" />
+				</PositionExitButton>
+				<Heading>Submit Craft</Heading>
 				<FormHead type={type} handleChange={this.handleTypeChange} style={type === "shoe" ? shoeDetails : ""} />
 				<FormCraftDetails type={type} details={details} handleChange={this.handleDetailsChange} />
 				<FormCraftStatus status={status} handleChange={this.handleStatusChange} />
-				<FormSubmitButton handleClick={this.handleFormData} />
+				<Icon changePage={(e) => this.handleFormData(e)} iconType="tick" width="7rem" />
 			</Wrapper >
 		);
 	}

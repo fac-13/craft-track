@@ -1,21 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-
 import Shoe from "../styled/shoe/shoe";
+import Wrapper from "../styled/wrapper/wrapper";
+import Heading from "../styled/heading/heading";
 import icon__scissor from "../../../public/assets/icon__scissor.svg";
-import icon__plus from "../../../public/assets/icon__plus.svg";
+import Icon from "../styled/icon/icon";
 
 const CraftList = styled.ul.attrs({
-	className: "list pl0 flex flex-wrap mh4"
+	className: "list pl0 flex flex-wrap"
 }) `
-margin-top: 5rem;
+margin: 0;
 `;
 
 const CraftItem = styled.li.attrs({
-	className: "w-30 h4 mh1"
+	className: "w-30"
 }) ``;
 
-const Plus = styled.button.attrs({
+const Center = styled.div.attrs({
 	className: "fixed bottom-0 z-2"
 }) `
 	left: 50%;
@@ -23,7 +24,8 @@ const Plus = styled.button.attrs({
 `;
 
 const All = ({ crafts, changePage }) => (
-	<React.Fragment>
+	<Wrapper>
+		<Heading>All crafts</Heading>
 		<CraftList >
 			{crafts.map((craft) => {
 				return (
@@ -35,10 +37,10 @@ const All = ({ crafts, changePage }) => (
 			})}
 
 		</CraftList>
-		<Plus onClick={(e) => changePage(e, "form")}>
-			<img className="icon-width" src={icon__plus} alt="add craft" />
-		</Plus>
-	</React.Fragment >
+		<Center >
+			<Icon changePage={(e) => changePage(e, "form")} width="7rem" iconType="plus" />
+		</Center>
+	</Wrapper>
 );
 
 export default All;
