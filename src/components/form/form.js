@@ -26,50 +26,57 @@ export default class Form extends React.Component {
 			colourBack: "black",
 			shoeSize: "36",
 		},
-		formData: {},
 	}
 
 	handleDetailsChange = (e) => {
 		e.persist();
-		this.setState(({ shoeDetails: prevDetails }) => {
-			return { shoeDetails: { ...prevDetails, [e.target.id]: e.target.value } };
+		const { id, value } = e.target;
+
+		this.setState(({ details: prevDetails }) => {
+			return { details: { ...prevDetails, [id]: value } };
 		});
 	}
 
 	handleFormData = (e) => {
-		const { type, details } = this.state;
-
-		const formData = {
-			id: Date.now(),
+		const {
 			type,
-			details,
-			status,
+			details: {
+				colourStitching,
+				colourFront,
+				colourBack,
+				shoeSize
+			}
+		} = this.state;
+
+		const params = {
+			TableName: "Crafts",
+			Item: {
+				"id": { N: Date.now().toString() },
+				"type": { S: type },
+				"colourStitching": { S: colourStitching },
+				"colourFront": { S: colourFront },
+				"colourBack": { S: colourBack },
+				"shoeSize": { N: shoeSize },
+			}
 		};
 
-		this.setState({ formData }, () => {
-			const newFormData = this.state.formData;
-			let params;
+		postData("https://crafttrack-server.herokuapp.com/postItem", params)
+			.then((res) => {
+				console.log(`Data added! Response: ${res}`);
+				// return fetch() // for update
+				return Promise.resolve({msg: "all data"});
+			})
+			.then((response) => {
+				// update app state with response
+				console.log(response);
+				console.log("call all state handler with new data");
+			})
+			.then(() => {
+				this.props.changePage(e, "all");
+			})
+			.catch((err) => console.log(err));
 
-			if (newFormData.type === "shoe") {
-				params = {
-					TableName: "Crafts",
-					Item: {
-						"id": { N: newFormData.id.toString() },
-						"type": { S: newFormData.type },
-						"colourStitching": { S: newFormData.details.colourStitching },
-						"colourFront": { S: newFormData.details.colourFront },
-						"colourBack": { S: newFormData.details.colourBack },
-						"shoeSize": { N: newFormData.details.shoeSize },
-					}
-				};
-			}
 
-			postData("http://localhost:3000/postItem", params)
-				.then((res) => console.log(`Data added! Response: ${res}`))
-				.catch((err) => console.log(err));
-		});
-
-		this.props.changePage(e, "all");
 	}
 
 	render() {

@@ -7,7 +7,6 @@ const data = {
 	"colourFront": "red",
 	"colourBack": "caramel",
 	"shoeSize": "36",
-	"quantity": "1"
 };
 
 test("Test Shoe component - with data passed in", () => {
