@@ -35,13 +35,26 @@ export default class App extends React.Component {
 		});
 	}
 
+	getUpdatedData = () => {
+		return () => {
+			getAllData("https://crafttrack-server.herokuapp.com/getItems")
+				.then((response) => {
+					console.log("response", response);
+					let crafts = formatDDBResponse(response);
+					this.setState({ crafts: crafts });
+				})
+				.catch(err => console.log(err.message));
+		};
+
+	}
+
 	render() {
 		const { pageView, crafts } = this.state;
 		return (
 			<React.Fragment>
 				<Frame position="top" />
 				{pageView === "all" && <All changePage={this.changePage} crafts={crafts} />}
-				{pageView === "form" && <Form changePage={this.changePage} />}
+				{pageView === "form" && <Form changePage={this.changePage} getUpdatedData={this.getUpdatedData()} />}
 				{pageView === "landing" && <Landing changePage={this.changePage} />}
 				<Frame position="bottom" />
 			</React.Fragment>
