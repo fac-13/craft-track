@@ -5,16 +5,26 @@ import Frame from "./styled/frame/frame";
 import Landing from "./landing/landing";
 import Form from "./form/form";
 import All from "./all/all";
+import getAllData from "../utility/getAllData";
+import formatDDBResponse from "../utility/formatDDBResponse";
 
-//dummy data to be passed into <All> component
-import { oldData } from "../utility/dummyData";
-const crafts = oldData;
+
 
 export default class App extends React.Component {
 	state = {
 		pageView: "landing",
-		crafts: crafts,
+		crafts: {},
 	};
+
+	componentDidMount() {
+		getAllData("https://crafttrack-server.herokuapp.com/getItems")
+			.then((response) => {
+				let crafts = formatDDBResponse(response);
+				this.setState({ crafts: crafts });
+			})
+			.catch(err => console.log(err.message));
+
+	}
 
 	changePage = (e, page) => {
 		e.preventDefault();

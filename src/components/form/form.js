@@ -118,11 +118,12 @@ export default class Form extends React.Component {
 				};
 			}
 			postData("http://localhost:3000/postItem", params)
-				.then((res) => console.log(`Data added! Response: ${res}`))
+				.then((res) => {
+					console.log(`Data added! Response: ${res}`);
+				})
 				.catch((err) => console.log(err));
 		});
 
-		this.props.changePage(e, "all");
 	}
 
 	render() {
