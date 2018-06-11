@@ -1,5 +1,9 @@
 /* you can add your own styles in this file */
 
+/* *, *:before, *:after {
+  border: 1px solid lightblue;
+} */
+
 body {
   /* 
     the var(--my-variable) syntax is a css variable
@@ -10,6 +14,7 @@ body {
   background-color: rgba(255,255,255,.05);
   margin: 1rem auto;
   max-width: 30rem;
+  font-family: 'Roboto Mono', monospace;
 }
 :root {
 }
