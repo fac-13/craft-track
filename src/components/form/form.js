@@ -39,6 +39,7 @@ export default class Form extends React.Component {
 
 	handleFormData = (e) => {
 		e.preventDefault();
+		e.persist();
 		console.log("handle form data");
 		const {
 			type,
@@ -64,10 +65,9 @@ export default class Form extends React.Component {
 		
 		console.log("start post?");
 		postData("https://crafttrack-server.herokuapp.com/postItem/", params)
-			.then((response) => {
+			.then(() => {
+				// fetch all craft data
 				// update app state with response
-				console.log("res", response);
-				console.log("call all state handler with new data");
 			})
 			.then(() => {
 				this.props.changePage(e, "all");
