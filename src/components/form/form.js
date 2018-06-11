@@ -63,7 +63,7 @@ export default class Form extends React.Component {
 		};
 		
 		console.log("start post?");
-		postData("http://localhost:3000/postItem/", params)
+		postData("https://crafttrack-server.herokuapp.com/postItem/", params)
 			.then((response) => {
 				// update app state with response
 				console.log("res", response);
