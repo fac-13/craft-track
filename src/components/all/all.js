@@ -78,7 +78,7 @@ export default class All extends React.Component {
 						if (craft.type === "shoe") {
 							return (
 								<CraftItem key={craft.id}>
-									<Shoe style={craft.details} width="5rem" />
+									<Shoe style={craft} width="5rem" />
 									<input type="checkbox" />
 									<input type="checkbox" />
 									<Button onClick={(e) => this.editEntry(e, craft.id)}>Edit</Button>
