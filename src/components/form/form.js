@@ -38,6 +38,8 @@ export default class Form extends React.Component {
 	}
 
 	handleFormData = (e) => {
+		e.preventDefault();
+		console.log("handle form data");
 		const {
 			type,
 			details: {
@@ -47,7 +49,7 @@ export default class Form extends React.Component {
 				shoeSize
 			}
 		} = this.state;
-
+		
 		const params = {
 			TableName: "Crafts",
 			Item: {
@@ -59,16 +61,12 @@ export default class Form extends React.Component {
 				"shoeSize": { N: shoeSize },
 			}
 		};
-
-		postData("https://crafttrack-server.herokuapp.com/postItem", params)
-			.then((res) => {
-				console.log(`Data added! Response: ${res}`);
-				// return fetch() // for update
-				return Promise.resolve({msg: "all data"});
-			})
+		
+		console.log("start post?");
+		postData("http://localhost:3000/postItem/", params)
 			.then((response) => {
 				// update app state with response
-				console.log(response);
+				console.log("res", response);
 				console.log("call all state handler with new data");
 			})
 			.then(() => {
@@ -90,7 +88,7 @@ export default class Form extends React.Component {
 				<Heading>Submit Craft</Heading>
 				<FormHead type={type} style={details} />
 				<FormCraftDetails type={type} details={details} handleChange={this.handleDetailsChange} />
-				<Icon changePage={(e) => this.handleFormData(e)} iconType="tick" width="7rem" />
+				<Icon changePage={this.handleFormData} iconType="tick" width="7rem" />
 			</Wrapper >
 		);
 	}

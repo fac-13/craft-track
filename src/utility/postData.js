@@ -11,7 +11,6 @@ export default (url, data) => {
 			if (!response.ok) {
 				throw Error(`Error with the request! ${response.statusText} `);
 			}
-			console.log("response: ", response);
 			return response.json();
 		});
 };

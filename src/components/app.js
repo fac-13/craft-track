@@ -12,7 +12,7 @@ import formatDDBResponse from "../utility/formatDDBResponse";
 
 export default class App extends React.Component {
 	state = {
-		pageView: "landing",
+		pageView: "form",
 		crafts: {},
 	};
 
