@@ -19,6 +19,7 @@ export default class App extends React.Component {
 	componentDidMount() {
 		getAllData("https://crafttrack-server.herokuapp.com/getItems")
 			.then((response) => {
+				console.log("response", response);
 				let crafts = formatDDBResponse(response);
 				this.setState({ crafts: crafts });
 			})
@@ -35,7 +36,7 @@ export default class App extends React.Component {
 	}
 
 	render() {
-		const { pageView } = this.state;
+		const { pageView, crafts } = this.state;
 		return (
 			<React.Fragment>
 				<Frame position="top" />

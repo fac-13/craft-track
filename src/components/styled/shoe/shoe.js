@@ -7,8 +7,7 @@ const Wrapper = styled.div`
   width: ${props => props.width || "10rem"};
 `;
 
-
-const Shoe = ({ style: { colourStitching, colourFront, colourBack, }, width }) => {
+const Shoe = ({ style: { colourStitching, colourFront, colourBack }, width }) => {
 
 	return (
 		<Wrapper width={width}>
