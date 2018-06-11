@@ -12,6 +12,6 @@ export default (url, data) => {
 				throw Error(`Error with the request! ${response.statusText} `);
 			}
 			console.log("response: ", response);
-			return response;
+			return response.json();
 		});
 };
