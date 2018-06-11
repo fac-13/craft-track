@@ -53,14 +53,19 @@ const Center = styled.div.attrs({
 	transform: translateX(-50%);
 `;
 
+
 export default class All extends React.Component {
 	state = {
 		toggleComplete: false
 	}
 
+	editEntry = (e, craftId) => {
+		e.preventDefault();
+		// to open the form, according to the passed in craftId
+	}
+
 	render() {
 		const { crafts, changePage } = this.props;
-		console.log(crafts);
 		return (
 			<Wrapper>
 				<Heading>All crafts</Heading>
@@ -70,14 +75,13 @@ export default class All extends React.Component {
 						<SubHeading>Sew</SubHeading>
 					</SubHeadings>
 					{crafts.map((craft) => {
-						console.log(craft);
 						if (craft.type === "shoe") {
 							return (
 								<CraftItem key={craft.id}>
 									<Shoe style={craft.details} width="5rem" />
 									<input type="checkbox" />
 									<input type="checkbox" />
-									<Button>Edit</Button>
+									<Button onClick={(e) => this.editEntry(e, craft.id)}>Edit</Button>
 								</CraftItem>);
 						}
 					})}
