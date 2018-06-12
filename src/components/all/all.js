@@ -4,6 +4,7 @@ import Shoe from "../styled/shoe/shoe";
 import Wrapper from "../styled/wrapper/wrapper";
 import Heading from "../styled/heading/heading";
 import Icon from "../styled/icon/icon";
+import Checkbox from "../checkbox/checkbox";
 
 const CraftList = styled.ul.attrs({
 	className: "list pl0"
@@ -54,6 +55,8 @@ const Center = styled.div.attrs({
 `;
 
 
+
+
 export default class All extends React.Component {
 	state = {
 		toggleComplete: false
@@ -65,7 +68,7 @@ export default class All extends React.Component {
 	}
 
 	render() {
-		const { crafts, changePage } = this.props;
+		const { crafts, changePage, toggleCheckbox } = this.props;
 		return (
 			<Wrapper>
 				<Heading>All crafts</Heading>
@@ -79,8 +82,9 @@ export default class All extends React.Component {
 							return (
 								<CraftItem key={craft.id}>
 									<Shoe style={craft} width="5rem" />
-									<input type="checkbox" />
-									<input type="checkbox" />
+									<Checkbox step="cut" id={craft.id} value={craft.cut} handleChange={toggleCheckbox} />
+									<Checkbox step="sew" id={craft.id} value={craft.sew} handleChange={toggleCheckbox} />
+
 									<Button onClick={(e) => this.editEntry(e, craft.id)}>Edit</Button>
 								</CraftItem>);
 						}
