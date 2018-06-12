@@ -80,7 +80,7 @@ export default class App extends React.Component {
 	}
 
 	render() {
-		const { pageView, crafts } = this.state;
+		const { pageView, crafts, updatedCrafts } = this.state;
 		const { changePage, getUpdatedData, toggleCheckbox } = this;
 		const { todoCrafts, completedCrafts } = separateCraftsViews(crafts);
 
@@ -89,7 +89,7 @@ export default class App extends React.Component {
 				<Frame position="top" />
 				{pageView === "landing" && <Landing changePage={changePage} />}
 
-				{pageView === "all" && <All changePage={changePage} crafts={todoCrafts} toggleCheckbox={toggleCheckbox} />}
+				{pageView === "all" && <All changePage={changePage} crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} />}
 				{pageView === "form" && <LogCraftForm changePage={changePage} getUpdatedData={getUpdatedData()} />}
 
 				{pageView === "completed" && <Completed changePage={changePage} crafts={completedCrafts} />}

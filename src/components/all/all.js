@@ -6,6 +6,7 @@ import Heading from "../styled/heading/heading";
 import Icon from "../styled/icon/icon";
 import Checkbox from "../checkbox/checkbox";
 import deleteData from "../../utility/deleteData";
+import putData from "../../utility/putData";
 
 const CraftList = styled.ul.attrs({
 	className: "list pl0"
@@ -67,6 +68,27 @@ export default class All extends React.Component {
 		e.preventDefault();
 		deleteData(`https://crafttrack-server.herokuapp.com/deleteItem/${craftId}`)
 			.catch(e => console.log(e));
+	}
+
+	componentWillUnmount() {
+		const params = this.props.updatedCrafts.map((craft) => {
+			let { id, colourStitching, colourFront, colourBack, shoeSize, cut, sew, type } = craft;
+
+			return {
+				Item: {
+					"id": { N: id },
+					"type": { S: type },
+					"colourStitching": { S: colourStitching },
+					"colourFront": { S: colourFront },
+					"colourBack": { S: colourBack },
+					"shoeSize": { N: shoeSize },
+					"cut": { BOOL: Boolean(cut) },
+					"sew": { BOOL: Boolean(sew) },
+				}
+			};
+		});
+		putData("https://crafttrack-server.herokuapp.com/putItem", params)
+			.catch(err => console.log(err.message));
 	}
 
 	render() {
