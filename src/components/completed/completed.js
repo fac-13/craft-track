@@ -3,9 +3,6 @@ import styled from "styled-components";
 import Shoe from "../styled/shoe/shoe";
 import Wrapper from "../styled/wrapper/wrapper";
 import Heading from "../styled/heading/heading";
-import Icon from "../styled/icon/icon";
-import Checkbox from "../checkbox/checkbox";
-import deleteData from "../../utility/deleteData";
 
 const CraftList = styled.ul.attrs({
 	className: "list pl0"
@@ -23,9 +20,7 @@ const Button = styled.button`
 	background-color: transparent;
 `;
 
-const SubHeading = styled.span.attrs({
-
-})`
+const SubHeading = styled.span`
 	width: 100%;
 	text-align: center;
 	font-family: 'Roboto';
@@ -35,7 +30,7 @@ const SubHeadings = styled.div.attrs({
 	className: "flex justify-between"
 })`
 	padding-left: 6rem;
-	/* width: 80%; */
+	width: 80%;
 	margin: 0 auto;
 	padding-right: 4rem;
 `;
@@ -43,7 +38,7 @@ const SubHeadings = styled.div.attrs({
 const CraftItem = styled.li.attrs({
 	className: "flex items-center justify-between"
 })`
-	width: 100%;
+	width: 80%;
 	height: 5rem;
 	margin: 0 auto;
 `;
@@ -56,24 +51,18 @@ const Center = styled.div.attrs({
 `;
 
 
+export default class Completed extends React.Component {
 
-
-export default class All extends React.Component {
-	state = {
-		toggleComplete: false
-	}
-
-	removeEntry = (e, craftId) => {
+	removeEntry = (e, id) => {
 		e.preventDefault();
-		deleteData(`https://crafttrack-server.herokuapp.com/deleteItem/${craftId}`)
-			.catch(e => console.log(e));
+		console.log(`remove craft: ${id}`);
 	}
 
 	render() {
-		const { crafts, changePage, toggleCheckbox } = this.props;
+		const { crafts, changePage } = this.props;
 		return (
 			<Wrapper>
-				<Heading>All crafts</Heading>
+				<Heading>Completed crafts</Heading>
 				<CraftList >
 					<SubHeadings>
 						<SubHeading>Cut</SubHeading>
@@ -84,16 +73,15 @@ export default class All extends React.Component {
 							return (
 								<CraftItem key={craft.id}>
 									<Shoe style={craft} width="5rem" />
-									<Checkbox step="cut" id={craft.id} value={craft.cut} handleChange={toggleCheckbox} />
-									<Checkbox step="sew" id={craft.id} value={craft.sew} handleChange={toggleCheckbox} />
-
-									<Button onClick={(e) => this.editEntry(e, craft.id)}>Edit</Button>
+									<input type="checkbox" />
+									<input type="checkbox" />
+									<Button onClick={(e) => this.removeEntry(e, craft.id)}>Remove</Button>
 								</CraftItem>);
 						}
 					})}
 				</CraftList>
 				<Center >
-					<Icon changePage={(e) => changePage(e, "form")} width="7rem" iconType="plus" />
+					<Button onClick={(e) => changePage(e, "invoice")}>Create invoice</Button>
 				</Center>
 			</Wrapper>
 		);
