@@ -15,6 +15,7 @@ export default class App extends React.Component {
 	state = {
 		pageView: "landing",
 		crafts: [],
+		updatedCrafts: [],
 	};
 
 	componentDidMount() {
@@ -35,6 +36,36 @@ export default class App extends React.Component {
 		});
 	}
 
+	toggleCheckbox = (id, step) => {
+		// find craft to be updated and toggle specified step
+		let modifiedCraft = this.state.crafts.reduce((acc, curr) => {
+			if (curr.id === id) {
+				curr[step] = !curr[step];
+				acc = curr;
+			}
+			return acc;
+		}, {});
+
+		let modifiedCraftList = this.state.updatedCrafts;
+		//add checkedCraft to 
+		modifiedCraftList.length === 0 ? modifiedCraftList.push(modifiedCraft) : null;
+
+		// check if checkedCraft is already
+		modifiedCraftList.reduce((acc, curr, index) => {
+			if (!acc && curr.id === modifiedCraft.id) {
+				modifiedCraftList[index] = curr;
+				return acc = true;
+			}
+
+			if (!acc && (index === modifiedCraftList.length - 1)) {
+				modifiedCraftList.push(modifiedCraft);
+			}
+			return acc;
+		}, false);
+
+		return this.setState({ updatedCrafts: modifiedCraftList });
+	}
+
 	getUpdatedData = () => {
 		return () => {
 			getAllData("https://crafttrack-server.herokuapp.com/getItems")
@@ -50,17 +81,18 @@ export default class App extends React.Component {
 
 	render() {
 		const { pageView, crafts } = this.state;
+		const { changePage, getUpdatedData, toggleCheckbox } = this;
 		const { todoCrafts, completedCrafts } = separateCraftsViews(crafts);
 
 		return (
 			<React.Fragment>
 				<Frame position="top" />
-				{pageView === "landing" && <Landing changePage={this.changePage} />}
+				{pageView === "landing" && <Landing changePage={changePage} />}
 
-				{pageView === "all" && <All changePage={this.changePage} crafts={todoCrafts} />}
-				{pageView === "form" && <LogCraftForm changePage={this.changePage} getUpdatedData={this.getUpdatedData()} />}
-				
-				{pageView === "completed" && <Completed changePage={this.changePage} crafts={completedCrafts} />}
+				{pageView === "all" && <All changePage={changePage} crafts={todoCrafts} toggleCheckbox={toggleCheckbox} />}
+				{pageView === "form" && <LogCraftForm changePage={changePage} getUpdatedData={getUpdatedData()} />}
+
+				{pageView === "completed" && <Completed changePage={changePage} crafts={completedCrafts} />}
 				<Frame position="bottom" />
 			</React.Fragment>
 		);
