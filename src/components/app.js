@@ -13,7 +13,7 @@ import separateCraftsViews from "../utility/separateCraftsViews";
 
 export default class App extends React.Component {
 	state = {
-		pageView: "completed",
+		pageView: "landing",
 		crafts: [],
 	};
 
