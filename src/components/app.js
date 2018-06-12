@@ -3,7 +3,7 @@ import "../../public/style.min.css";
 
 import Frame from "./styled/frame/frame";
 import Landing from "./landing/landing";
-import Form from "./form/form";
+import LogCraftForm from "./logCraftForm/logCraftForm";
 import All from "./all/all";
 import Completed from "./completed/completed";
 
@@ -58,7 +58,7 @@ export default class App extends React.Component {
 				{pageView === "landing" && <Landing changePage={this.changePage} />}
 
 				{pageView === "all" && <All changePage={this.changePage} crafts={todoCrafts} />}
-				{pageView === "form" && <Form changePage={this.changePage} getUpdatedData={this.getUpdatedData()} />}
+				{pageView === "form" && <LogCraftForm changePage={this.changePage} getUpdatedData={this.getUpdatedData()} />}
 				
 				{pageView === "completed" && <Completed changePage={this.changePage} crafts={completedCrafts} />}
 				<Frame position="bottom" />

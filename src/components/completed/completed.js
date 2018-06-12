@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Shoe from "../styled/shoe/shoe";
 import Wrapper from "../styled/wrapper/wrapper";
 import Heading from "../styled/heading/heading";
-import Icon from "../styled/icon/icon";
 
 const CraftList = styled.ul.attrs({
 	className: "list pl0"
