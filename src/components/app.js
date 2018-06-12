@@ -1,5 +1,6 @@
 import React from "react";
 import "../../public/style.min.css";
+import { Router, Link } from "@reach/router";
 
 import Frame from "./styled/frame/frame";
 import Landing from "./landing/landing";
@@ -10,6 +11,12 @@ import Completed from "./completed/completed";
 import getAllData from "../utility/getAllData";
 import formatDDBResponse from "../utility/formatDDBResponse";
 import separateCraftsViews from "../utility/separateCraftsViews";
+
+import styled from "styled-components";
+
+const Nav = styled.nav.attrs({
+	className: "flex"
+})``;
 
 export default class App extends React.Component {
 	state = {
@@ -80,20 +87,29 @@ export default class App extends React.Component {
 	}
 
 	render() {
-		const { pageView, crafts, updatedCrafts } = this.state;
+		const { crafts, updatedCrafts } = this.state;
 		const { changePage, getUpdatedData, toggleCheckbox } = this;
 		const { todoCrafts, completedCrafts } = separateCraftsViews(crafts);
 
 		return (
 			<React.Fragment>
 				<Frame position="top" />
-				{pageView === "landing" && <Landing changePage={changePage} />}
 
-				{pageView === "all" && <All changePage={changePage} crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} />}
-				{pageView === "form" && <LogCraftForm changePage={changePage} getUpdatedData={getUpdatedData()} />}
+				<Nav>
+					<Link to="/">Landing</Link>
+					<Link to="all">Tracker</Link>
+					<Link to="completed">Completed</Link>
+					<Link to="log-craft">Log Craft</Link>
+				</Nav>
 
-				{pageView === "completed" && <Completed changePage={changePage} crafts={completedCrafts} />}
-				<Frame position="bottom" />
+				<Router>
+					<Landing path="/" changePage={changePage} />
+
+					<All path="all" changePage={changePage} crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} />
+					<LogCraftForm path="log-craft" changePage={changePage} getUpdatedData={getUpdatedData()} />
+
+					<Completed path="completed" changePage={changePage} crafts={completedCrafts} />
+				</Router>
 			</React.Fragment>
 		);
 	}
