@@ -54,6 +54,11 @@ const Center = styled.div.attrs({
 
 export default class Completed extends React.Component {
 
+	removeEntry = (e, id) => {
+		e.preventDefault();
+		console.log(`remove craft: ${id}`);
+	}
+
 	render() {
 		const { crafts, changePage } = this.props;
 		return (
@@ -71,13 +76,13 @@ export default class Completed extends React.Component {
 									<Shoe style={craft} width="5rem" />
 									<input type="checkbox" />
 									<input type="checkbox" />
-									<Button onClick={(e) => this.editEntry(e, craft.id)}>Remove</Button>
+									<Button onClick={(e) => this.removeEntry(e, craft.id)}>Remove</Button>
 								</CraftItem>);
 						}
 					})}
 				</CraftList>
 				<Center >
-					<button onClick={(e) => changePage(e, "invoice")}>Create invoice</button>
+					<Button onClick={(e) => changePage(e, "invoice")}>Create invoice</Button>
 				</Center>
 			</Wrapper>
 		);

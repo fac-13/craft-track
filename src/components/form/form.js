@@ -40,7 +40,6 @@ export default class Form extends React.Component {
 	handleFormData = (e) => {
 		e.preventDefault();
 		e.persist();
-		console.log("handle form data");
 		const {
 			type,
 			details: {
@@ -50,7 +49,7 @@ export default class Form extends React.Component {
 				shoeSize
 			}
 		} = this.state;
-		
+
 		const params = {
 			TableName: "Crafts",
 			Item: {
@@ -62,12 +61,10 @@ export default class Form extends React.Component {
 				"shoeSize": { N: shoeSize },
 			}
 		};
-		
-		console.log("start post?");
+
 		postData("https://crafttrack-server.herokuapp.com/postItem/", params)
 			.then(() => {
-				// fetch all craft data
-				// update app state with response
+				this.props.getUpdatedData();
 			})
 			.then(() => {
 				this.props.changePage(e, "all");

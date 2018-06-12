@@ -35,6 +35,18 @@ export default class App extends React.Component {
 		});
 	}
 
+	getUpdatedData = () => {
+		return () => {
+			getAllData("https://crafttrack-server.herokuapp.com/getItems")
+				.then((response) => {
+					console.log("response", response);
+					let crafts = formatDDBResponse(response);
+					this.setState({ crafts: crafts });
+				})
+				.catch(err => console.log(err.message));
+		};
+
+	}
 
 	render() {
 		const { pageView, crafts } = this.state;
@@ -43,10 +55,12 @@ export default class App extends React.Component {
 		return (
 			<React.Fragment>
 				<Frame position="top" />
-				{pageView === "all" && <All changePage={this.changePage} crafts={todoCrafts} />}
-				{pageView === "completed" && <Completed changePage={this.changePage} crafts={completedCrafts} />}
-				{pageView === "form" && <Form changePage={this.changePage} />}
 				{pageView === "landing" && <Landing changePage={this.changePage} />}
+
+				{pageView === "all" && <All changePage={this.changePage} crafts={todoCrafts} />}
+				{pageView === "form" && <Form changePage={this.changePage} getUpdatedData={this.getUpdatedData()} />}
+				
+				{pageView === "completed" && <Completed changePage={this.changePage} crafts={completedCrafts} />}
 				<Frame position="bottom" />
 			</React.Fragment>
 		);
