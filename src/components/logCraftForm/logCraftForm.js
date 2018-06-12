@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { navigate } from "@reach/router";
 import FormHead from "./formHead/formHead";
 import FormCraftDetails from "./formCraftDetails/formCraftDetails";
 import Icon from "../styled/icon/icon";
@@ -67,7 +67,7 @@ export default class LogCraftForm extends React.Component {
 				this.props.getUpdatedData();
 			})
 			.then(() => {
-				this.props.changePage(e, "all");
+				navigate("/all");
 			})
 			.catch((err) => console.log(err));
 
@@ -75,12 +75,11 @@ export default class LogCraftForm extends React.Component {
 
 	render() {
 		const { type, details } = this.state;
-		const { changePage } = this.props;
 
 		return (
 			<Wrapper>
 				<PositionExitButton>
-					<Icon changePage={(e) => changePage(e, "all")} iconType="cross" width="5rem" />
+					<Icon changePage={() => navigate("/all")} iconType="cross" width="5rem" />
 				</PositionExitButton>
 				<Heading>Submit Craft</Heading>
 				<FormHead type={type} style={details} />

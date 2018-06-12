@@ -1,22 +1,25 @@
 import React from "react";
+import styled from "styled-components";
 import "../../public/style.min.css";
 import { Router, Link } from "@reach/router";
 
 import Frame from "./styled/frame/frame";
 import Landing from "./landing/landing";
-import LogCraftForm from "./logCraftForm/logCraftForm";
 import All from "./all/all";
+import LogCraftForm from "./logCraftForm/logCraftForm";
 import Completed from "./completed/completed";
+import Invoice from "./invoice/invoice";
 
 import getAllData from "../utility/getAllData";
 import formatDDBResponse from "../utility/formatDDBResponse";
 import separateCraftsViews from "../utility/separateCraftsViews";
 
-import styled from "styled-components";
 
 const Nav = styled.nav.attrs({
 	className: "flex"
-})``;
+})`
+	justify-content: space-between;
+`;
 
 export default class App extends React.Component {
 	state = {
@@ -36,12 +39,6 @@ export default class App extends React.Component {
 
 	}
 
-	changePage = (e, page) => {
-		e.preventDefault();
-		this.setState(() => {
-			return { pageView: page };
-		});
-	}
 
 	toggleCheckbox = (id, step) => {
 		// find craft to be updated and toggle specified step
@@ -88,7 +85,7 @@ export default class App extends React.Component {
 
 	render() {
 		const { crafts, updatedCrafts } = this.state;
-		const { changePage, getUpdatedData, toggleCheckbox } = this;
+		const { getUpdatedData, toggleCheckbox } = this;
 		const { todoCrafts, completedCrafts } = separateCraftsViews(crafts);
 
 		return (
@@ -100,16 +97,20 @@ export default class App extends React.Component {
 					<Link to="all">Tracker</Link>
 					<Link to="completed">Completed</Link>
 					<Link to="log-craft">Log Craft</Link>
+					<Link to="invoice">Invoice</Link>
 				</Nav>
 
 				<Router>
-					<Landing path="/" changePage={changePage} />
+					<Landing path="/" />
 
-					<All path="all" changePage={changePage} crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} />
-					<LogCraftForm path="log-craft" changePage={changePage} getUpdatedData={getUpdatedData()} />
+					<All path="all" crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} />
+					<LogCraftForm path="log-craft" getUpdatedData={getUpdatedData()} />
 
-					<Completed path="completed" changePage={changePage} crafts={completedCrafts} />
+					<Completed path="completed" crafts={completedCrafts} />
+					<Invoice path="invoice" crafts={completedCrafts} />
 				</Router>
+
+				<Frame position="bottom" />
 			</React.Fragment>
 		);
 	}

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { navigate } from "@reach/router";
 import Shoe from "../styled/shoe/shoe";
 import Wrapper from "../styled/wrapper/wrapper";
 import Heading from "../styled/heading/heading";
@@ -59,7 +60,7 @@ export default class Completed extends React.Component {
 	}
 
 	render() {
-		const { crafts, changePage } = this.props;
+		const { crafts } = this.props;
 		return (
 			<Wrapper>
 				<Heading>Completed crafts</Heading>
@@ -81,7 +82,7 @@ export default class Completed extends React.Component {
 					})}
 				</CraftList>
 				<Center >
-					<Button onClick={(e) => changePage(e, "invoice")}>Create invoice</Button>
+					<Button onClick={() => navigate("/invoice")}>Create invoice</Button>
 				</Center>
 			</Wrapper>
 		);
