@@ -3,17 +3,18 @@ import "../../public/style.min.css";
 
 import Frame from "./styled/frame/frame";
 import Landing from "./landing/landing";
-import Form from "./form/form";
+import LogCraftForm from "./logCraftForm/logCraftForm";
 import All from "./all/all";
+import Completed from "./completed/completed";
+
 import getAllData from "../utility/getAllData";
 import formatDDBResponse from "../utility/formatDDBResponse";
-
-
+import separateCraftsViews from "../utility/separateCraftsViews";
 
 export default class App extends React.Component {
 	state = {
 		pageView: "landing",
-		crafts: {},
+		crafts: [],
 	};
 
 	componentDidMount() {
@@ -29,7 +30,6 @@ export default class App extends React.Component {
 
 	changePage = (e, page) => {
 		e.preventDefault();
-		console.log("pressed");
 		this.setState(() => {
 			return { pageView: page };
 		});
@@ -50,12 +50,17 @@ export default class App extends React.Component {
 
 	render() {
 		const { pageView, crafts } = this.state;
+		const { todoCrafts, completedCrafts } = separateCraftsViews(crafts);
+
 		return (
 			<React.Fragment>
 				<Frame position="top" />
-				{pageView === "all" && <All changePage={this.changePage} crafts={crafts} />}
-				{pageView === "form" && <Form changePage={this.changePage} getUpdatedData={this.getUpdatedData()} />}
 				{pageView === "landing" && <Landing changePage={this.changePage} />}
+
+				{pageView === "all" && <All changePage={this.changePage} crafts={todoCrafts} />}
+				{pageView === "form" && <LogCraftForm changePage={this.changePage} getUpdatedData={this.getUpdatedData()} />}
+				
+				{pageView === "completed" && <Completed changePage={this.changePage} crafts={completedCrafts} />}
 				<Frame position="bottom" />
 			</React.Fragment>
 		);

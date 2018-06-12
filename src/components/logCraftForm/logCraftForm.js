@@ -16,7 +16,7 @@ top: -2rem;
 right: -3rem;
 `;
 
-export default class Form extends React.Component {
+export default class LogCraftForm extends React.Component {
 
 	state = {
 		type: "shoe",
