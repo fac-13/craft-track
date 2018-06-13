@@ -54,6 +54,7 @@
     "tachyons-custom": "^4.9.4"
   },
   "dependencies": {
+    "@reach/router": "^1.1.1",
     "autoprefixer": "^8.5.0",
     "aws-sdk": "^2.252.1",
     "eslint-config-airbnb": "^16.1.0",

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { navigate } from "@reach/router";
 import Shoe from "../styled/shoe/shoe";
 import Wrapper from "../styled/wrapper/wrapper";
 import Heading from "../styled/heading/heading";
@@ -7,6 +8,7 @@ import Icon from "../styled/icon/icon";
 import Checkbox from "../checkbox/checkbox";
 import deleteData from "../../utility/deleteData";
 import putData from "../../utility/putData";
+
 
 const CraftList = styled.ul.attrs({
 	className: "list pl0"
@@ -93,7 +95,7 @@ export default class All extends React.Component {
 	}
 
 	render() {
-		const { crafts, changePage, toggleCheckbox } = this.props;
+		const { crafts, toggleCheckbox } = this.props;
 		return (
 			<Wrapper>
 				<Heading>All crafts</Heading>
@@ -116,7 +118,7 @@ export default class All extends React.Component {
 					})}
 				</CraftList>
 				<Center >
-					<Icon changePage={(e) => changePage(e, "form")} width="7rem" iconType="plus" />
+					<Icon changePage={() => navigate("/log-craft")} width="7rem" iconType="plus" />
 				</Center>
 			</Wrapper>
 		);
