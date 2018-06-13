@@ -71,6 +71,7 @@ export default class All extends React.Component {
 	}
 
 	componentWillUnmount() {
+		if (this.props.updatedCrafts.length < 1) return;
 		const params = this.props.updatedCrafts.map((craft) => {
 			let { id, colourStitching, colourFront, colourBack, shoeSize, cut, sew, type } = craft;
 
