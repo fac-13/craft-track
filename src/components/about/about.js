@@ -22,7 +22,7 @@ const About = () => (
 			<Shoe style={shoeDetails} />
 		</div>
 		<ParagraphText>Try me out and log your first craft!</ParagraphText>
-		<Icon changePage={() =>  navigate("/all")}iconType="arrow" width="7rem" />
+		<Icon changePage={() =>  navigate("/log-craft")}iconType="arrow" width="7rem" />
 	</Wrapper>);
 
 export default About;

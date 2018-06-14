@@ -63,7 +63,7 @@ export default class ToBeInvoiced extends React.Component {
 		const { crafts } = this.props;
 		return (
 			<Wrapper>
-				<Heading>Completed crafts</Heading>
+				<Heading>To Be Invoiced Crafts</Heading>
 				<CraftList >
 					<SubHeadings>
 						<SubHeading>Cut</SubHeading>
@@ -82,7 +82,7 @@ export default class ToBeInvoiced extends React.Component {
 					})}
 				</CraftList>
 				<Center >
-					<Button onClick={() => navigate("/invoice")}>Create invoice</Button>
+					<Button onClick={() => navigate("/invoice")}>Create Invoice</Button>
 				</Center>
 			</Wrapper>
 		);

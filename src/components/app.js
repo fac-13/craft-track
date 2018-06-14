@@ -5,7 +5,7 @@ import { Router, Link } from "@reach/router";
 
 import Frame from "./styled/frame/frame";
 import About from "./about/about";
-import Todo from "./todo/todo";
+import Tracker from "./tracker/tracker";
 import LogCraftForm from "./logCraftForm/logCraftForm";
 import ToBeInvoiced from "./toBeInvoiced/toBeInvoiced";
 
@@ -94,13 +94,13 @@ export default class App extends React.Component {
 				<Nav>
 					<Link to="/">About</Link>
 					<Link to="log-craft">Log Craft</Link>
-					<Link to="todo">Tracker</Link>
+					<Link to="tracker">Tracker</Link>
 					<Link to="to-be-invoiced">To Be Invoiced</Link>
 				</Nav>
 
 				<Router>
 					<About path="/" />
-					<Todo path="todo" crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} />
+					<Tracker path="tracker" crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} />
 					<LogCraftForm path="log-craft" getUpdatedData={getUpdatedData()} />
 					<ToBeInvoiced path="to-be-invoiced" crafts={completedCrafts} />
 				</Router>

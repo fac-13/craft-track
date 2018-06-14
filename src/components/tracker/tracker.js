@@ -61,7 +61,7 @@ const Center = styled.div.attrs({
 
 
 
-export default class Todo extends React.Component {
+export default class Tracker extends React.Component {
 	state = {
 		toggleComplete: false
 	}
@@ -98,7 +98,7 @@ export default class Todo extends React.Component {
 		const { crafts, toggleCheckbox } = this.props;
 		return (
 			<Wrapper>
-				<Heading>All crafts</Heading>
+				<Heading>Track Crafts</Heading>
 				<CraftList >
 					<SubHeadings>
 						<SubHeading>Cut</SubHeading>
