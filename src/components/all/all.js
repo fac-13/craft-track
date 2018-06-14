@@ -6,6 +6,7 @@ import Wrapper from "../styled/wrapper/wrapper";
 import Heading from "../styled/heading/heading";
 import Icon from "../styled/icon/icon";
 import Checkbox from "../checkbox/checkbox";
+import Button from "../button/button";
 import deleteData from "../../utility/deleteData";
 import putData from "../../utility/putData";
 
@@ -15,15 +16,6 @@ const CraftList = styled.ul.attrs({
 })`
 margin: 0;
 width: 100%;
-`;
-
-const Button = styled.button`
-	color: #777;
-	font-size: .8rem;
-	text-decoration: underline;
-  font-family: 'Roboto Mono', monospace;
-	border: none;
-	background-color: transparent;
 `;
 
 const SubHeading = styled.span.attrs({
@@ -75,7 +67,7 @@ export default class All extends React.Component {
 	componentWillUnmount() {
 		if (this.props.updatedCrafts.length < 1) return;
 		const params = this.props.updatedCrafts.map((craft) => {
-			let { id, colourStitching, colourFront, colourBack, shoeSize, cut, sew, type } = craft;
+			let { id, colourStitching, colourFront, colourBack, shoeSize, cut, sew, completed, type } = craft;
 
 			return {
 				Item: {
@@ -87,6 +79,7 @@ export default class All extends React.Component {
 					"shoeSize": { N: shoeSize },
 					"cut": { BOOL: Boolean(cut) },
 					"sew": { BOOL: Boolean(sew) },
+					"completed": { BOOL: Boolean(completed) },
 				}
 			};
 		});
@@ -111,8 +104,7 @@ export default class All extends React.Component {
 									<Shoe style={craft} width="5rem" />
 									<Checkbox step="cut" id={craft.id} value={craft.cut} handleChange={toggleCheckbox} />
 									<Checkbox step="sew" id={craft.id} value={craft.sew} handleChange={toggleCheckbox} />
-
-									<Button onClick={(e) => this.editEntry(e, craft.id)}>Edit</Button>
+									<Button step="completed" id={craft.id} handleChange={toggleCheckbox}>Done</Button>
 								</CraftItem>);
 						}
 					})}
