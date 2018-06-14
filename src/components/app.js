@@ -34,15 +34,16 @@ export default class App extends React.Component {
 				console.log("response", response);
 				let crafts = formatDDBResponse(response);
 				this.setState({ crafts: crafts });
+				console.log(crafts);
 			})
 			.catch(err => console.log(err.message));
 
 	}
 
-
 	toggleCheckbox = (id, step) => {
 		// find craft to be updated and toggle specified step
-		let modifiedCraft = this.state.crafts.reduce((acc, curr) => {
+		const { crafts, updatedCrafts } = this.state;
+		let modifiedCraft = crafts.reduce((acc, curr) => {
 			if (curr.id === id) {
 				curr[step] = !curr[step];
 				acc = curr;
@@ -50,11 +51,11 @@ export default class App extends React.Component {
 			return acc;
 		}, {});
 
-		let modifiedCraftList = this.state.updatedCrafts;
-		//add checkedCraft to 
+		let modifiedCraftList = updatedCrafts;
+		//add the modifiedCraft to modifiedCraftList list
 		modifiedCraftList.length === 0 ? modifiedCraftList.push(modifiedCraft) : null;
 
-		// check if checkedCraft is already
+		// check if checkedCraft is already present, if so will update otherwise will push it to modifiedCraftList
 		modifiedCraftList.reduce((acc, curr, index) => {
 			if (!acc && curr.id === modifiedCraft.id) {
 				modifiedCraftList[index] = curr;
@@ -69,6 +70,8 @@ export default class App extends React.Component {
 
 		return this.setState({ updatedCrafts: modifiedCraftList });
 	}
+
+
 
 	getUpdatedData = () => {
 		return () => {
@@ -113,7 +116,7 @@ export default class App extends React.Component {
 					<About path="/" />
 					<Tracker path="tracker" crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} removeDeletedEntry={removeDeletedEntry} />
 					<LogCraftForm path="log-craft" getUpdatedData={getUpdatedData()} />
-					<ToBeInvoiced path="to-be-invoiced" crafts={completedCrafts} />
+					<ToBeInvoiced path="to-be-invoiced" crafts={completedCrafts} toggleCheckbox={toggleCheckbox} />
 				</Router>
 
 				<Frame position="bottom" />
