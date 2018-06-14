@@ -51,9 +51,6 @@ const Center = styled.div.attrs({
 	transform: translateX(-50%);
 `;
 
-
-
-
 export default class Tracker extends React.Component {
 	state = {
 		toggleComplete: false
@@ -61,12 +58,8 @@ export default class Tracker extends React.Component {
 
 	removeEntry = (e, craftId) => {
 		e.preventDefault();
-		console.log(craftId);
 		deleteData(`https://crafttrack-server.herokuapp.com/deleteItem/${craftId}`)
-			.then(() => {
-				console.log("deleted from db");
-				this.props.removeDeletedEntry(craftId);
-			})
+			.then(() => this.props.removeDeletedEntry(craftId))
 			.catch(e => console.log(e));
 	}
 

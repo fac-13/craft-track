@@ -5,21 +5,14 @@ import Shoe from "../styled/shoe/shoe";
 import Wrapper from "../styled/wrapper/wrapper";
 import Checkbox from "../checkbox/checkbox";
 import Heading from "../styled/heading/heading";
+import Button from "../button/button";
+import { StyledButton } from "../styled/button/styledButton";
 
 const CraftList = styled.ul.attrs({
 	className: "list pl0"
 })`
 margin: 0;
 width: 100%;
-`;
-
-const Button = styled.button`
-	color: #777;
-	font-size: .8rem;
-	text-decoration: underline;
-  font-family: 'Roboto Mono', monospace;
-	border: none;
-	background-color: transparent;
 `;
 
 const SubHeading = styled.span`
@@ -61,7 +54,7 @@ export default class ToBeInvoiced extends React.Component {
 	}
 
 	render() {
-		const { crafts } = this.props;
+		const { crafts, toggleCheckbox } = this.props;
 		return (
 			<Wrapper>
 				<Heading>To Be Invoiced Crafts</Heading>
@@ -75,15 +68,15 @@ export default class ToBeInvoiced extends React.Component {
 							return (
 								<CraftItem key={craft.id}>
 									<Shoe style={craft} width="5rem" />
-									<Checkbox step="cut" id={craft.id} value={craft.cut} handleChange={() => {}} />
-									<Checkbox step="sew" id={craft.id} value={craft.sew} handleChange={() => {}} />
-									{/* <Button step="completed" id={craft.id} handleChange={toggleCheckbox}>Done</Button> */}
+									<Checkbox step="cut" id={craft.id} value={craft.cut} handleChange={() => { }} />
+									<Checkbox step="sew" id={craft.id} value={craft.sew} handleChange={() => { }} />
+									<Button step="completed" id={craft.id} handleChange={toggleCheckbox}>Revert</Button>
 								</CraftItem>);
 						}
 					})}
 				</CraftList>
 				<Center >
-					<Button onClick={() => navigate("/invoice")}>Create Invoice</Button>
+					<StyledButton onClick={() => navigate("/invoice")}>Create Invoice</StyledButton>
 				</Center>
 			</Wrapper>
 		);
