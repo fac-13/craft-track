@@ -4,11 +4,10 @@ import "../../public/style.min.css";
 import { Router, Link } from "@reach/router";
 
 import Frame from "./styled/frame/frame";
-import Landing from "./landing/landing";
-import All from "./all/all";
+import About from "./about/about";
+import Todo from "./todo/todo";
 import LogCraftForm from "./logCraftForm/logCraftForm";
-import Completed from "./completed/completed";
-import Invoice from "./invoice/invoice";
+import ToBeInvoiced from "./toBeInvoiced/toBeInvoiced";
 
 import getAllData from "../utility/getAllData";
 import formatDDBResponse from "../utility/formatDDBResponse";
@@ -93,21 +92,17 @@ export default class App extends React.Component {
 				<Frame position="top" />
 
 				<Nav>
-					<Link to="/">Landing</Link>
-					<Link to="all">Tracker</Link>
-					<Link to="completed">Completed</Link>
+					<Link to="/">About</Link>
 					<Link to="log-craft">Log Craft</Link>
-					<Link to="invoice">Invoice</Link>
+					<Link to="todo">Tracker</Link>
+					<Link to="to-be-invoiced">To Be Invoiced</Link>
 				</Nav>
 
 				<Router>
-					<Landing path="/" />
-
-					<All path="all" crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} />
+					<About path="/" />
+					<Todo path="todo" crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} />
 					<LogCraftForm path="log-craft" getUpdatedData={getUpdatedData()} />
-
-					<Completed path="completed" crafts={completedCrafts} />
-					<Invoice path="invoice" crafts={completedCrafts} />
+					<ToBeInvoiced path="to-be-invoiced" crafts={completedCrafts} />
 				</Router>
 
 				<Frame position="bottom" />

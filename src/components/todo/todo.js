@@ -61,7 +61,7 @@ const Center = styled.div.attrs({
 
 
 
-export default class All extends React.Component {
+export default class Todo extends React.Component {
 	state = {
 		toggleComplete: false
 	}

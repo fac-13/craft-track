@@ -14,7 +14,7 @@ const shoeDetails = {
 	colourBack: "#ccc",
 };
 
-const Landing = () => (
+const About = () => (
 	<Wrapper>
 		<Heading>Welcome to Craft Track!</Heading>
 		<ParagraphText>This is an app to log the work you’ve done for Juta Shoes.</ParagraphText>
@@ -25,4 +25,4 @@ const Landing = () => (
 		<Icon changePage={() =>  navigate("/all")}iconType="arrow" width="7rem" />
 	</Wrapper>);
 
-export default Landing;
+export default About;

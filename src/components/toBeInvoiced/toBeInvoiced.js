@@ -52,7 +52,7 @@ const Center = styled.div.attrs({
 `;
 
 
-export default class Completed extends React.Component {
+export default class ToBeInvoiced extends React.Component {
 
 	removeEntry = (e, id) => {
 		e.preventDefault();
