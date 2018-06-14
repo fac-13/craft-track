@@ -7,7 +7,7 @@ const Frame = styled.div.attrs({
 	height: 8rem;
 	transform: skewY(-5deg);
 ${ props => props.position}: -5rem;
-	z-index: -100;
+	z-index: 1;
 `;
 
 export default Frame;
