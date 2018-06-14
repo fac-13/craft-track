@@ -51,7 +51,7 @@ export default class App extends React.Component {
 			return acc;
 		}, {});
 
-		let modifiedCraftList = updatedCrafts;
+		let modifiedCraftList = [...updatedCrafts];
 		//add the modifiedCraft to modifiedCraftList list
 		modifiedCraftList.length === 0 ? modifiedCraftList.push(modifiedCraft) : null;
 
