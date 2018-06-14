@@ -29,7 +29,7 @@ export default class App extends React.Component {
 	};
 
 	componentDidMount() {
-		getAllData("http://localhost:3000/getItems")
+		getAllData("https://crafttrack-server.herokuapp.com/getItems")
 			.then((response) => {
 				console.log("response", response);
 				let crafts = formatDDBResponse(response);
@@ -72,7 +72,7 @@ export default class App extends React.Component {
 
 	getUpdatedData = () => {
 		return () => {
-			getAllData("http://localhost:3000/getItems")
+			getAllData("https://crafttrack-server.herokuapp.com/getItems")
 				.then((response) => {
 					console.log("response", response);
 					let crafts = formatDDBResponse(response);
