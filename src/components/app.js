@@ -29,7 +29,7 @@ export default class App extends React.Component {
 	};
 
 	componentDidMount() {
-		getAllData("https://crafttrack-server.herokuapp.com/getItems")
+		getAllData("http://localhost:3000/getItems")
 			.then((response) => {
 				console.log("response", response);
 				let crafts = formatDDBResponse(response);
@@ -72,7 +72,7 @@ export default class App extends React.Component {
 
 	getUpdatedData = () => {
 		return () => {
-			getAllData("https://crafttrack-server.herokuapp.com/getItems")
+			getAllData("http://localhost:3000/getItems")
 				.then((response) => {
 					console.log("response", response);
 					let crafts = formatDDBResponse(response);
@@ -83,9 +83,19 @@ export default class App extends React.Component {
 
 	}
 
+	removeDeletedEntry = (craftId) => {
+		let newCraftList = this.state.crafts.reduce((acc, curr) => {
+			if (curr.id !== craftId) {
+				acc.push(curr);
+			}
+			return acc;
+		}, []);
+		this.setState({ crafts: newCraftList });
+	}
+
 	render() {
 		const { crafts, updatedCrafts } = this.state;
-		const { getUpdatedData, toggleCheckbox } = this;
+		const { getUpdatedData, toggleCheckbox, removeDeletedEntry } = this;
 		const { todoCrafts, completedCrafts } = separateCraftsViews(crafts);
 
 		return (
@@ -103,7 +113,7 @@ export default class App extends React.Component {
 				<Router>
 					<Landing path="/" />
 
-					<All path="all" crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} />
+					<All path="all" crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} removeDeletedEntry={removeDeletedEntry} />
 					<LogCraftForm path="log-craft" getUpdatedData={getUpdatedData()} />
 
 					<Completed path="completed" crafts={completedCrafts} />
@@ -111,7 +121,7 @@ export default class App extends React.Component {
 				</Router>
 
 				<Frame position="bottom" />
-			</React.Fragment>
+			</React.Fragment >
 		);
 	}
 }
