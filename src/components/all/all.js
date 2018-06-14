@@ -9,6 +9,7 @@ import Checkbox from "../checkbox/checkbox";
 import Button from "../button/button";
 import deleteData from "../../utility/deleteData";
 import putData from "../../utility/putData";
+import { StyledButton } from "../styled/button/styledButton";
 
 
 const CraftList = styled.ul.attrs({
@@ -60,6 +61,7 @@ export default class All extends React.Component {
 
 	removeEntry = (e, craftId) => {
 		e.preventDefault();
+		console.log(craftId);
 		deleteData(`https://crafttrack-server.herokuapp.com/deleteItem/${craftId}`)
 			.then(() => {
 				console.log("deleted from db");
@@ -109,7 +111,7 @@ export default class All extends React.Component {
 									<Checkbox step="cut" id={craft.id} value={craft.cut} handleChange={toggleCheckbox} />
 									<Checkbox step="sew" id={craft.id} value={craft.sew} handleChange={toggleCheckbox} />
 									<Button step="completed" id={craft.id} handleChange={toggleCheckbox}>Done</Button>
-									<Button onClick={(e) => this.removeEntry(e, craft.id)}>Remove</Button>
+									<StyledButton onClick={(e) => this.removeEntry(e, craft.id)}>Remove</StyledButton>
 								</CraftItem>);
 						}
 					})}
