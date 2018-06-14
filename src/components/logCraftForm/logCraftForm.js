@@ -67,7 +67,7 @@ export default class LogCraftForm extends React.Component {
 				this.props.getUpdatedData();
 			})
 			.then(() => {
-				navigate("/all");
+				navigate("/tracker");
 			})
 			.catch((err) => console.log(err));
 
@@ -79,9 +79,9 @@ export default class LogCraftForm extends React.Component {
 		return (
 			<Wrapper>
 				<PositionExitButton>
-					<Icon changePage={() => navigate("/all")} iconType="cross" width="5rem" />
+					<Icon changePage={() => navigate("/tracker")} iconType="cross" width="5rem" />
 				</PositionExitButton>
-				<Heading>Submit Craft</Heading>
+				<Heading>Log Craft</Heading>
 				<FormHead type={type} style={details} />
 				<FormCraftDetails type={type} details={details} handleChange={this.handleDetailsChange} />
 				<Icon changePage={this.handleFormData} iconType="tick" width="7rem" />

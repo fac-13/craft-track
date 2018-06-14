@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { navigate } from "@reach/router";
 import Shoe from "../styled/shoe/shoe";
 import Wrapper from "../styled/wrapper/wrapper";
+import Checkbox from "../checkbox/checkbox";
 import Heading from "../styled/heading/heading";
 
 const CraftList = styled.ul.attrs({
@@ -52,7 +53,7 @@ const Center = styled.div.attrs({
 `;
 
 
-export default class Completed extends React.Component {
+export default class ToBeInvoiced extends React.Component {
 
 	removeEntry = (e, id) => {
 		e.preventDefault();
@@ -63,7 +64,7 @@ export default class Completed extends React.Component {
 		const { crafts } = this.props;
 		return (
 			<Wrapper>
-				<Heading>Completed crafts</Heading>
+				<Heading>To Be Invoiced Crafts</Heading>
 				<CraftList >
 					<SubHeadings>
 						<SubHeading>Cut</SubHeading>
@@ -74,15 +75,15 @@ export default class Completed extends React.Component {
 							return (
 								<CraftItem key={craft.id}>
 									<Shoe style={craft} width="5rem" />
-									<input type="checkbox" />
-									<input type="checkbox" />
-									<Button onClick={(e) => this.removeEntry(e, craft.id)}>Remove</Button>
+									<Checkbox step="cut" id={craft.id} value={craft.cut} handleChange={() => {}} />
+									<Checkbox step="sew" id={craft.id} value={craft.sew} handleChange={() => {}} />
+									{/* <Button step="completed" id={craft.id} handleChange={toggleCheckbox}>Done</Button> */}
 								</CraftItem>);
 						}
 					})}
 				</CraftList>
 				<Center >
-					<Button onClick={() => navigate("/invoice")}>Create invoice</Button>
+					<Button onClick={() => navigate("/invoice")}>Create Invoice</Button>
 				</Center>
 			</Wrapper>
 		);

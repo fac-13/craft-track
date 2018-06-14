@@ -4,11 +4,10 @@ import "../../public/style.min.css";
 import { Router, Link } from "@reach/router";
 
 import Frame from "./styled/frame/frame";
-import Landing from "./landing/landing";
-import All from "./all/all";
+import About from "./about/about";
+import Tracker from "./tracker/tracker";
 import LogCraftForm from "./logCraftForm/logCraftForm";
-import Completed from "./completed/completed";
-import Invoice from "./invoice/invoice";
+import ToBeInvoiced from "./toBeInvoiced/toBeInvoiced";
 
 import getAllData from "../utility/getAllData";
 import formatDDBResponse from "../utility/formatDDBResponse";
@@ -16,9 +15,10 @@ import separateCraftsViews from "../utility/separateCraftsViews";
 
 
 const Nav = styled.nav.attrs({
-	className: "flex"
+	className: "fixed"
 })`
-	justify-content: space-between;
+	top: 1rem;
+	right: 1rem;
 `;
 
 export default class App extends React.Component {
@@ -29,7 +29,7 @@ export default class App extends React.Component {
 	};
 
 	componentDidMount() {
-		getAllData("http://localhost:3000/getItems")
+		getAllData("https://crafttrack-server.herokuapp.com/getItems")
 			.then((response) => {
 				console.log("response", response);
 				let crafts = formatDDBResponse(response);
@@ -72,7 +72,7 @@ export default class App extends React.Component {
 
 	getUpdatedData = () => {
 		return () => {
-			getAllData("http://localhost:3000/getItems")
+			getAllData("https://crafttrack-server.herokuapp.com/getItems")
 				.then((response) => {
 					console.log("response", response);
 					let crafts = formatDDBResponse(response);
@@ -103,21 +103,17 @@ export default class App extends React.Component {
 				<Frame position="top" />
 
 				<Nav>
-					<Link to="/">Landing</Link>
-					<Link to="all">Tracker</Link>
-					<Link to="completed">Completed</Link>
+					<Link to="/">About</Link>
 					<Link to="log-craft">Log Craft</Link>
-					<Link to="invoice">Invoice</Link>
+					<Link to="tracker">Tracker</Link>
+					<Link to="to-be-invoiced">To Be Invoiced</Link>
 				</Nav>
 
 				<Router>
-					<Landing path="/" />
-
-					<All path="all" crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} removeDeletedEntry={removeDeletedEntry} />
+					<About path="/" />
+					<Tracker path="tracker" crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} removeDeletedEntry={removeDeletedEntry} />
 					<LogCraftForm path="log-craft" getUpdatedData={getUpdatedData()} />
-
-					<Completed path="completed" crafts={completedCrafts} />
-					<Invoice path="invoice" crafts={completedCrafts} />
+					<ToBeInvoiced path="to-be-invoiced" crafts={completedCrafts} />
 				</Router>
 
 				<Frame position="bottom" />
