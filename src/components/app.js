@@ -15,9 +15,10 @@ import separateCraftsViews from "../utility/separateCraftsViews";
 
 
 const Nav = styled.nav.attrs({
-	className: "flex"
+	className: "fixed"
 })`
-	justify-content: space-between;
+	top: 1rem;
+	right: 1rem;
 `;
 
 export default class App extends React.Component {
