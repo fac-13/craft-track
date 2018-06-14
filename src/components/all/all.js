@@ -61,6 +61,10 @@ export default class All extends React.Component {
 	removeEntry = (e, craftId) => {
 		e.preventDefault();
 		deleteData(`https://crafttrack-server.herokuapp.com/deleteItem/${craftId}`)
+			.then(() => {
+				console.log("deleted from db");
+				this.props.removeDeletedEntry(craftId);
+			})
 			.catch(e => console.log(e));
 	}
 
@@ -105,6 +109,7 @@ export default class All extends React.Component {
 									<Checkbox step="cut" id={craft.id} value={craft.cut} handleChange={toggleCheckbox} />
 									<Checkbox step="sew" id={craft.id} value={craft.sew} handleChange={toggleCheckbox} />
 									<Button step="completed" id={craft.id} handleChange={toggleCheckbox}>Done</Button>
+									<Button onClick={(e) => this.removeEntry(e, craft.id)}>Remove</Button>
 								</CraftItem>);
 						}
 					})}
