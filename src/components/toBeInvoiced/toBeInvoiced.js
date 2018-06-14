@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { navigate } from "@reach/router";
 import Shoe from "../styled/shoe/shoe";
 import Wrapper from "../styled/wrapper/wrapper";
+import Checkbox from "../checkbox/checkbox";
 import Heading from "../styled/heading/heading";
 
 const CraftList = styled.ul.attrs({
@@ -74,9 +75,9 @@ export default class ToBeInvoiced extends React.Component {
 							return (
 								<CraftItem key={craft.id}>
 									<Shoe style={craft} width="5rem" />
-									<input type="checkbox" />
-									<input type="checkbox" />
-									<Button onClick={(e) => this.removeEntry(e, craft.id)}>Remove</Button>
+									<Checkbox step="cut" id={craft.id} value={craft.cut} handleChange={() => {}} />
+									<Checkbox step="sew" id={craft.id} value={craft.sew} handleChange={() => {}} />
+									{/* <Button step="completed" id={craft.id} handleChange={toggleCheckbox}>Done</Button> */}
 								</CraftItem>);
 						}
 					})}

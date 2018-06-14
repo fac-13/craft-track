@@ -83,9 +83,19 @@ export default class App extends React.Component {
 
 	}
 
+	removeDeletedEntry = (craftId) => {
+		let newCraftList = this.state.crafts.reduce((acc, curr) => {
+			if (curr.id !== craftId) {
+				acc.push(curr);
+			}
+			return acc;
+		}, []);
+		this.setState({ crafts: newCraftList });
+	}
+
 	render() {
 		const { crafts, updatedCrafts } = this.state;
-		const { getUpdatedData, toggleCheckbox } = this;
+		const { getUpdatedData, toggleCheckbox, removeDeletedEntry } = this;
 		const { todoCrafts, completedCrafts } = separateCraftsViews(crafts);
 
 		return (
@@ -101,13 +111,13 @@ export default class App extends React.Component {
 
 				<Router>
 					<About path="/" />
-					<Tracker path="tracker" crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} />
+					<Tracker path="tracker" crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} removeDeletedEntry={removeDeletedEntry} />
 					<LogCraftForm path="log-craft" getUpdatedData={getUpdatedData()} />
 					<ToBeInvoiced path="to-be-invoiced" crafts={completedCrafts} />
 				</Router>
 
 				<Frame position="bottom" />
-			</React.Fragment>
+			</React.Fragment >
 		);
 	}
 }
