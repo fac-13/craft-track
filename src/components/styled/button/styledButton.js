@@ -7,4 +7,5 @@ export const StyledButton = styled.button`
   font-family: 'Roboto Mono', monospace;
 	border: none;
 	background-color: transparent;
+	cursor: pointer;
 `;

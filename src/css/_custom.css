@@ -24,3 +24,10 @@ body {
   width: 5rem;
 }
 
+nav a {
+  padding-left: 1rem;
+}
+
+nav a:first-child {
+  padding-left: 0;
+}
