@@ -6,12 +6,13 @@ import icon__plus from "../../../../public/assets/icon__plus.svg";
 import icon__tick from "../../../../public/assets/icon__tick.svg";
 
 const Button = styled.button.attrs({
-}) `
+})`
   border: none;
   background-color: transparent;
   border-radius: 0;
   width: ${ props => props.width};
-outline: none;
+	outline: none;
+	cursor: pointer;
 `;
 
 const Icon = ({ iconType, width, changePage }) => {
