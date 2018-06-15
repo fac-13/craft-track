@@ -19,6 +19,7 @@ const Nav = styled.nav.attrs({
 })`
 	top: 1rem;
 	right: 1rem;
+	z-index: 2;
 `;
 
 export default class App extends React.Component {
