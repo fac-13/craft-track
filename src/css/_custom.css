@@ -24,10 +24,27 @@ body {
   width: 5rem;
 }
 
-nav a {
-  padding-left: 1rem;
+.link {
+  margin-left: 1.2rem;
+  color: #777;
+  text-decoration: underline;
+  font-size: .9rem;
 }
 
-nav a:first-child {
-  padding-left: 0;
+.link:first-child {
+  margin-left: 0;
+}
+
+.link:visited {
+  color: #777;
+}
+
+.link--active {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.link--active:visited {
+  font-weight: 700;
+  text-decoration: none;
 }

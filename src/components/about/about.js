@@ -17,7 +17,7 @@ const shoeDetails = {
 const About = () => (
 	<Wrapper>
 		<Heading>Welcome to Craft Track!</Heading>
-		<ParagraphText>This is an app to log the work you’ve done for Juta Shoes.</ParagraphText>
+		<ParagraphText>This is an app to log the work you’ve done for Juta Shoes. </ParagraphText>
 		<div className="ma4">
 			<Shoe style={shoeDetails} />
 		</div>

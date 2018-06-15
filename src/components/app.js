@@ -13,7 +13,6 @@ import getAllData from "../utility/getAllData";
 import formatDDBResponse from "../utility/formatDDBResponse";
 import separateCraftsViews from "../utility/separateCraftsViews";
 
-
 const Nav = styled.nav.attrs({
 	className: "fixed"
 })`
@@ -24,9 +23,9 @@ const Nav = styled.nav.attrs({
 
 export default class App extends React.Component {
 	state = {
-		pageView: "landing",
 		crafts: [],
 		updatedCrafts: [],
+		currentPage: "about",
 	};
 
 	componentDidMount() {
@@ -72,13 +71,18 @@ export default class App extends React.Component {
 		return this.setState({ updatedCrafts: modifiedCraftList });
 	}
 
+	updateCurrentPage = (page) => {
+		return () => {
+			this.setState({ currentPage: page });
+		};
+	}
 
+	addActiveClass = (page) => this.state.currentPage === page && "link--active";
 
 	getUpdatedData = () => {
 		return () => {
 			getAllData("https://crafttrack-server.herokuapp.com/getItems")
 				.then((response) => {
-					console.log("response", response);
 					let crafts = formatDDBResponse(response);
 					this.setState({ crafts: crafts });
 				})
@@ -99,7 +103,7 @@ export default class App extends React.Component {
 
 	render() {
 		const { crafts, updatedCrafts } = this.state;
-		const { getUpdatedData, toggleCheckbox, removeDeletedEntry } = this;
+		const { getUpdatedData, toggleCheckbox, removeDeletedEntry, updateCurrentPage, addActiveClass } = this;
 		const { todoCrafts, completedCrafts } = separateCraftsViews(crafts);
 
 		return (
@@ -107,10 +111,10 @@ export default class App extends React.Component {
 				<Frame position="top" />
 
 				<Nav>
-					<Link to="/">About</Link>
-					<Link to="log-craft">Log Craft</Link>
-					<Link to="tracker">Tracker</Link>
-					<Link to="to-be-invoiced">To Be Invoiced</Link>
+					<Link onClick={updateCurrentPage("about")} className={"link " + addActiveClass("about")} to="/">About</Link>
+					<Link onClick={updateCurrentPage("log-craft")} className={"link " + addActiveClass("log-craft")} to="log-craft">Log Craft</Link>
+					<Link onClick={updateCurrentPage("tracker")} className={"link " + addActiveClass("tracker")} to="tracker">Tracker</Link>
+					<Link onClick={updateCurrentPage("to-be-invoiced")} className={"link " + addActiveClass("to-be-invoiced")} to="to-be-invoiced">To Be Invoiced</Link>
 				</Nav>
 
 				<Router>

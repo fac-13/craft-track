@@ -6,6 +6,7 @@ const Label = styled.label.attrs({
   font-weight: 300;
   text-transform: uppercase;
   width: 100%;
+  display: block;
   display: ${props => props.hidden ? "none" : "block"};
   font-size: .9rem;
   letter-spacing: .1rem;
