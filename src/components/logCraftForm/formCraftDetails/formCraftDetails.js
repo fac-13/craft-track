@@ -7,15 +7,15 @@ import DropDownField from "../../dropDownField/dropDownField";
 const dropDownConfig = {
 	colourStitching: {
 		labelText: "stitching colour",
-		optionsArray: ["white" ,"black", "navy", "sandybrown", "darkred", "lightsalmon", "steelblue", "lightseagreen", "palevioletred"], 
+		optionsArray: ["black", "navy", "sandybrown", "darkred", "lightsalmon", "steelblue", "lightseagreen", "palevioletred"], 
 	},
 	colourFront: {
 		labelText: "colour of leather: front",
-		optionsArray: ["white",  "black", "navy", "sandybrown", "darkred", "lightsalmon", "steelblue", "lightseagreen", "palevioletred"],
+		optionsArray: [ "black", "navy", "sandybrown", "darkred", "lightsalmon", "steelblue", "lightseagreen", "palevioletred"],
 	},
 	colourBack: {
 		labelText: "colour of leather: back",
-		optionsArray: ["white", "black", "navy", "sandybrown", "darkred", "lightsalmon", "steelblue", "lightseagreen", "palevioletred"],
+		optionsArray: ["black", "navy", "sandybrown", "darkred", "lightsalmon", "steelblue", "lightseagreen", "palevioletred"],
 	},
 	shoeSize: {
 		labelText: "shoe size",
