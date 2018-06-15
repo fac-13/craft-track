@@ -73,17 +73,14 @@ export default class App extends React.Component {
 
 
 
-	getUpdatedData = () => {
-		return () => {
-			getAllData("https://crafttrack-server.herokuapp.com/getItems")
-				.then((response) => {
-					console.log("response", response);
-					let crafts = formatDDBResponse(response);
-					this.setState({ crafts: crafts });
-				})
-				.catch(err => console.log(err.message));
-		};
-
+	getUpdatedData = () => {	
+		return getAllData("https://crafttrack-server.herokuapp.com/getItems")
+			.then((response) => {
+				console.log("response", response);
+				let crafts = formatDDBResponse(response);
+				this.setState({ crafts: crafts });
+			})
+			.catch(err => console.log(err.message));
 	}
 
 	removeDeletedEntry = (craftId) => {
@@ -115,7 +112,7 @@ export default class App extends React.Component {
 				<Router>
 					<About path="/" />
 					<Tracker path="tracker" crafts={todoCrafts} updatedCrafts={updatedCrafts} toggleCheckbox={toggleCheckbox} removeDeletedEntry={removeDeletedEntry} />
-					<LogCraftForm path="log-craft" getUpdatedData={getUpdatedData()} />
+					<LogCraftForm path="log-craft" getUpdatedData={getUpdatedData} />
 					<ToBeInvoiced path="to-be-invoiced" crafts={completedCrafts} toggleCheckbox={toggleCheckbox} />
 				</Router>
 

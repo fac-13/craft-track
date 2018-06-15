@@ -76,7 +76,7 @@ export default class ToBeInvoiced extends React.Component {
 					})}
 				</CraftList>
 				<Center >
-					<StyledButton onClick={() => navigate("/invoice")}>Create Invoice</StyledButton>
+					<StyledButton onClick={() => navigate("/to-be-invoiced")}>Create Invoice</StyledButton>
 				</Center>
 			</Wrapper>
 		);
