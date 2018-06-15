@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import "../../public/style.min.css";
-import { Router, Link } from "@reach/router";
+import { Router } from "@reach/router";
 
 import Frame from "./styled/frame/frame";
 import About from "./about/about";
 import Tracker from "./tracker/tracker";
 import LogCraftForm from "./logCraftForm/logCraftForm";
 import ToBeInvoiced from "./toBeInvoiced/toBeInvoiced";
+import NavLink from "./navLink/navLink";
 
 import getAllData from "../utility/getAllData";
 import formatDDBResponse from "../utility/formatDDBResponse";
@@ -111,10 +112,10 @@ export default class App extends React.Component {
 				<Frame position="top" />
 
 				<Nav>
-					<Link onClick={updateCurrentPage("about")} className={"link " + addActiveClass("about")} to="/">About</Link>
-					<Link onClick={updateCurrentPage("log-craft")} className={"link " + addActiveClass("log-craft")} to="log-craft">Log Craft</Link>
-					<Link onClick={updateCurrentPage("tracker")} className={"link " + addActiveClass("tracker")} to="tracker">Tracker</Link>
-					<Link onClick={updateCurrentPage("to-be-invoiced")} className={"link " + addActiveClass("to-be-invoiced")} to="to-be-invoiced">To Be Invoiced</Link>
+					<NavLink updateCurrentPage={updateCurrentPage} addActiveClass={addActiveClass} page="about" />
+					<NavLink updateCurrentPage={updateCurrentPage} addActiveClass={addActiveClass} page="log-craft" />
+					<NavLink updateCurrentPage={updateCurrentPage} addActiveClass={addActiveClass} page="tracker" />
+					<NavLink updateCurrentPage={updateCurrentPage} addActiveClass={addActiveClass} page="to-be-invoiced" />
 				</Nav>
 
 				<Router>
