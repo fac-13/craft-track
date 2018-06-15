@@ -7,6 +7,7 @@ import Icon from "../styled/icon/icon";
 import Heading from "../styled/heading/heading";
 import Wrapper from "../styled/wrapper/wrapper";
 import postData from "../../utility/postData";
+import getRandomColor from "../../utility/getRandomColor";
 
 const PositionExitButton = styled.div.attrs({
 	className: "absolute"
@@ -21,9 +22,9 @@ export default class LogCraftForm extends React.Component {
 	state = {
 		type: "shoe",
 		details: {
-			colourStitching: "black",
-			colourFront: "black",
-			colourBack: "black",
+			colourStitching: getRandomColor(),
+			colourFront: getRandomColor(),
+			colourBack: getRandomColor(),
 			shoeSize: "36",
 		},
 	}
